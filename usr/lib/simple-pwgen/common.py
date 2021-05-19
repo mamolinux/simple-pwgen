@@ -4,11 +4,8 @@
 import configparser
 import gettext
 import locale
-from math import e
 import os
 import random
-from re import S
-import re
 import string
 import threading
 from gi.repository import GObject

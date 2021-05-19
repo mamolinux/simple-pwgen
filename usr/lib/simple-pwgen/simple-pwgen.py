@@ -12,7 +12,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gio, Gdk, XApp
+from gi.repository import Gtk, Gio, Gdk
 
 from common import DEFAULT_CONFIG_FILE, USRCONFIG_FILE, PasswordGenerator
 
@@ -46,26 +46,19 @@ class SimplepwgenWindow():
     
     def __init__(self, application):
         
-        if True:
-            self.application = application
-            # self.settings = Gio.Settings(schema_id="org.x.simple-pwgen")
-            self.generator = PasswordGenerator()
-            self.config = configparser.ConfigParser()
-            self.icon_theme = Gtk.IconTheme.get_default()
+        self.application = application
+        # self.settings = Gio.Settings(schema_id="org.x.simple-pwgen")
+        self.generator = PasswordGenerator()
+        self.config = configparser.ConfigParser()
+        self.icon_theme = Gtk.IconTheme.get_default()
         
-        if True:
-            # Set the Glade file
-            gladefile = "/usr/local/share/simple-pwgen/simple-pwgen.ui"
-            self.builder = Gtk.Builder()
-            self.builder.add_from_file(gladefile)
-            self.window = self.builder.get_object("MainWindow")
-            self.window.set_title(_("Simple Password Generator"))
-            # self.box = self.builder.get_object("stack")
-            # self.icon_chooser = XApp.IconChooserButton()
-            # self.icon_chooser.set_icon("webapp-manager")
-            # self.icon_chooser.show()
+        # Set the Glade file
+        gladefile = "/usr/local/share/simple-pwgen/simple-pwgen.ui"
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file(gladefile)
+        self.window = self.builder.get_object("MainWindow")
+        self.window.set_title(_("Simple Password Generator"))
         
-        # if True:
         # Create variables to quickly access dynamic widgets
         # input values
         self.pwlengthfield = self.builder.get_object("pwlengthfield")
@@ -81,48 +74,45 @@ class SimplepwgenWindow():
         self.symbol_switch = self.builder.get_object("symbol_switch")
         self.minsymbol_num = self.builder.get_object("minsymbol")
         self.excludesymbol_field = self.builder.get_object("excludesymbols")
-            
-        if True:
-            # Buttons
-            self.reset_button = self.builder.get_object("reset_button")
-            self.save_button = self.builder.get_object("save_button")
-            self.generate_button = self.builder.get_object("generate_button")
-            self.copy_button = self.builder.get_object("copy_button")
-            self.quit_button = self.builder.get_object("quit_button")
         
-        if True:
-            # Widget signals
-            self.reset_button.connect("clicked", self.on_reset_button)
-            self.save_button.connect("clicked", self.on_save_button)
-            self.generate_button.connect("clicked", self.on_generate_button)
-            self.copy_button.connect("clicked", self.on_copy_button)
-            self.quit_button.connect("clicked", self.on_quit)
+        # Buttons
+        self.reset_button = self.builder.get_object("reset_button")
+        self.save_button = self.builder.get_object("save_button")
+        self.generate_button = self.builder.get_object("generate_button")
+        self.copy_button = self.builder.get_object("copy_button")
+        self.quit_button = self.builder.get_object("quit_button")
         
-        if True:
-            # Menubar
-            accel_group = Gtk.AccelGroup()
-            self.window.add_accel_group(accel_group)
-            menu = self.builder.get_object("main_menu")
-            # Add "About" option in drop-down menu
-            item = Gtk.ImageMenuItem()
-            item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
-            item.set_label(_("About"))
-            item.connect("activate", self.open_about)
-            key, mod = Gtk.accelerator_parse("F1")
-            item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
-            menu.append(item)
-            # Add "Quit" option in drop-down menu
-            item = Gtk.ImageMenuItem(label=_("Quit"))
-            image = Gtk.Image.new_from_icon_name("application-exit-symbolic", Gtk.IconSize.MENU)
-            item.set_image(image)
-            item.connect('activate', self.on_quit)
-            key, mod = Gtk.accelerator_parse("<Control>Q")
-            item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
-            key, mod = Gtk.accelerator_parse("<Control>W")
-            item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
-            menu.append(item)
-            # Show all drop-down menu options
-            menu.show_all()
+        # Widget signals
+        self.reset_button.connect("clicked", self.on_reset_button)
+        self.save_button.connect("clicked", self.on_save_button)
+        self.generate_button.connect("clicked", self.on_generate_button)
+        self.copy_button.connect("clicked", self.on_copy_button)
+        self.quit_button.connect("clicked", self.on_quit)
+        
+        # Menubar
+        accel_group = Gtk.AccelGroup()
+        self.window.add_accel_group(accel_group)
+        menu = self.builder.get_object("main_menu")
+        # Add "About" option in drop-down menu
+        item = Gtk.ImageMenuItem()
+        item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
+        item.set_label(_("About"))
+        item.connect("activate", self.open_about)
+        key, mod = Gtk.accelerator_parse("F1")
+        item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+        menu.append(item)
+        # Add "Quit" option in drop-down menu
+        item = Gtk.ImageMenuItem(label=_("Quit"))
+        image = Gtk.Image.new_from_icon_name("application-exit-symbolic", Gtk.IconSize.MENU)
+        item.set_image(image)
+        item.connect('activate', self.on_quit)
+        key, mod = Gtk.accelerator_parse("<Control>Q")
+        item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+        key, mod = Gtk.accelerator_parse("<Control>W")
+        item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+        menu.append(item)
+        # Show all drop-down menu options
+        menu.show_all()
         
         self.load_config()
         
@@ -194,8 +184,8 @@ class SimplepwgenWindow():
             print (e)
         
         dlg.set_version("__DEB_VERSION__")
-        dlg.set_icon_name("webapp-manager")
-        dlg.set_logo_icon_name("webapp-manager")
+        dlg.set_icon_name("simple-pwgen")
+        dlg.set_logo_icon_name("simple-pwgen")
         dlg.set_website("https://www.github.com/hsbasu/simple-pwgen")
         def close(w, res):
             if res == Gtk.ResponseType.CANCEL or res == Gtk.ResponseType.DELETE_EVENT:
