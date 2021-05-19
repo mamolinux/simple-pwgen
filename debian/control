@@ -1,0 +1,17 @@
+Source: simple-pwgen
+Section: admin
+Priority: optional
+Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 3.9.5
+
+Package: simple-pwgen
+Architecture: all
+Depends: python3,
+         python3-gi,
+         python3-configobj,
+         python3-setproctitle,
+         ${misc:Depends},
+Description: Simple Password Generator
+ Very simple GUI based app to generate
+ random password.

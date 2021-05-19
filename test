@@ -1,0 +1,7 @@
+#!/bin/bash
+# sudo rm -rf /usr/local/lib/simple-pwgen
+# sudo rm -rf /usr/local/share/simple-pwgen
+sudo rm -rf /usr/local/share/glib-2.0
+sudo cp -R usr/local/share/simple-pwgen /usr/local/share
+# sudo cp -R usr /
+# simple-pwgen

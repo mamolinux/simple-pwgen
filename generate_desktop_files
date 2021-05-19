@@ -1,0 +1,48 @@
+#!/usr/bin/python3
+
+DOMAIN = "simple-pwgen"
+PATH = "/usr/share/locale"
+
+import os
+import gettext
+import additionalfiles
+
+os.environ['LANGUAGE'] = "en_US.UTF-8"
+gettext.install(DOMAIN, PATH)
+
+prefix = "[Desktop Entry]\n"
+
+suffix = """Exec=simple-pwgen
+Icon=simple-pwgen
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=false
+NotShowIn=KDE;
+"""
+
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/simple-pwgen.desktop", prefix, _("Simple Password Generator"), _("Very simple GUI based app to generate random password"), suffix)
+
+# prefix = "[Desktop Entry]\n"
+
+# suffix = """Exec=simple-pwgen
+# Icon=simple-pwgen
+# Terminal=false
+# Type=Application
+# Encoding=UTF-8
+# Categories=Application;Utility;
+# X-KDE-StartupNotify=false
+# OnlyShowIn=KDE;
+# """
+
+# additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/simple-pwgen.desktop", prefix, _("Simple Password Generator"), _("Very simple GUI based app to generate random password"), suffix, genericName=_("Simple PWGen"))
+
+# prefix = """[Desktop Entry]
+# Type=Directory
+# """
+
+# suffix = """Icon=applications-webapps
+# """
+
+# additionalfiles.generate(DOMAIN, PATH, "usr/share/desktop-directories/webapps-webapps.directory", prefix, _("Web"), None, suffix)

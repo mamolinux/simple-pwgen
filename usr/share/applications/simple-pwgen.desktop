@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Simple Password Generator
+Comment=Very simple GUI based app to generate random password
+Exec=simple-pwgen
+Icon=simple-pwgen
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=false
+NotShowIn=KDE;
