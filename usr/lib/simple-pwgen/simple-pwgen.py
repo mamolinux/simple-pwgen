@@ -47,13 +47,13 @@ class SimplepwgenWindow():
     def __init__(self, application):
         
         self.application = application
-        # self.settings = Gio.Settings(schema_id="org.x.simple-pwgen")
+        self.settings = Gio.Settings(schema_id="org.x.simple-pwgen")
         self.generator = PasswordGenerator()
         self.config = configparser.ConfigParser()
         self.icon_theme = Gtk.IconTheme.get_default()
         
         # Set the Glade file
-        gladefile = "/usr/local/share/simple-pwgen/simple-pwgen.ui"
+        gladefile = "/usr/share/simple-pwgen/simple-pwgen.ui"
         self.builder = Gtk.Builder()
         self.builder.add_from_file(gladefile)
         self.window = self.builder.get_object("MainWindow")
