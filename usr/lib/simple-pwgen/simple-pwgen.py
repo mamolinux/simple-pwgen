@@ -53,7 +53,7 @@ class SimplepwgenWindow():
         self.icon_theme = Gtk.IconTheme.get_default()
         
         # Set the Glade file
-        gladefile = "/usr/share/simple-pwgen/simple-pwgen.ui"
+        gladefile = "/usr/local/share/simple-pwgen/simple-pwgen.ui"
         self.builder = Gtk.Builder()
         self.builder.add_from_file(gladefile)
         self.window = self.builder.get_object("MainWindow")
