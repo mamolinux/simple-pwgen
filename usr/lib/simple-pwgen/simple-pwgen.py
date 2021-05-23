@@ -169,9 +169,16 @@ class SimplepwgenWindow():
     def open_about(self, widget):
         dlg = Gtk.AboutDialog()
         dlg.set_transient_for(self.window)
+        dlg.set_icon_name("simple-pwgen")
+        dlg.set_logo_icon_name("simple-pwgen")
         dlg.set_title(_("About"))
+        
         dlg.set_program_name(_("Simple Password Generator"))
+        dlg.set_version("__DEB_VERSION__")
         dlg.set_comments(_("Very simple GUI based app to generate random password"))
+        dlg.set_website("https://www.github.com/hsbasu/simple-pwgen")
+        dlg.set_authors(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
+        dlg.set_documenters(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
         try:
             h = open('/usr/share/common-licenses/GPL', encoding="utf-8")
             s = h.readlines()
@@ -183,10 +190,6 @@ class SimplepwgenWindow():
         except Exception as e:
             print (e)
         
-        dlg.set_version("__DEB_VERSION__")
-        dlg.set_icon_name("simple-pwgen")
-        dlg.set_logo_icon_name("simple-pwgen")
-        dlg.set_website("https://www.github.com/hsbasu/simple-pwgen")
         def close(w, res):
             if res == Gtk.ResponseType.CANCEL or res == Gtk.ResponseType.DELETE_EVENT:
                 w.destroy()
