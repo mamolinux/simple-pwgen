@@ -13,5 +13,5 @@ Depends: python3,
          python3-setproctitle,
          ${misc:Depends},
 Description: Simple Password Generator
- Very simple Pyhton-based GUI application
+ Very simple Python3-based GUI application
  to generate random password.
