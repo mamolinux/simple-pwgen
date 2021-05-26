@@ -36,8 +36,7 @@ _ = gettext.gettext
 
 # Constants
 CONFIG_DIR = os.path.expanduser('~/.config/simple-pwgen/')
-DEFAULT_CONFIG_FILE = os.path.join(CONFIG_DIR+'default_config.cfg')
-USRCONFIG_FILE = os.path.join(CONFIG_DIR+'usr_config.cfg')
+CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
 
 
 # This is the backend.
@@ -54,9 +53,8 @@ class PasswordGenerator():
             pass
         else:
             os.makedirs(CONFIG_DIR)
+        
         self.config = configparser.ConfigParser()
-        self.passw = PasswordGenerator.GeneratePW(self)
-        # print(self.passw)
         self.save_config()
         
     def load_config(self):
@@ -67,53 +65,36 @@ class PasswordGenerator():
         then it triggers default configurations.
         """
         
+        self.config.read(CONFIG_FILE)
         try:
-            try:
-                self.config.read(USRCONFIG_FILE)
-                self.pwlength = int(self.config["user"]['pwlength'])
-                self.lowercase = int(self.config["user"]['lowercase'])
-                self.lowercase_num = int(self.config["user"]['lowercase_num'])
-                self.excludeLowercase = self.config["user"]['excludeLowercase']
-                self.uppercase = int(self.config["user"]['uppercase'])
-                self.uppercase_num = int(self.config["user"]['uppercase_num'])
-                self.excludeUppercase = self.config["user"]['excludeUppercase']
-                self.digit = int(self.config["user"]['digit'])
-                self.digit_num = int(self.config["user"]['digit_num'])
-                self.excludeDigit = self.config["user"]['excludeDigit']
-                self.symbol = int(self.config["user"]['symbol'])
-                self.symbol_num = int(self.config["user"]['symbol_num'])
-                self.excludeSymbol = self.config["user"]['excludeSymbol']
-            except:
-                print('User configuration file is missing or not readable. Trying default configuration file')
-                self.config.read(DEFAULT_CONFIG_FILE)
-                self.pwlength = int(self.config["default"]['pwlength'])
-                self.lowercase = int(self.config["default"]['lowercase'])
-                self.lowercase_num = int(self.config["default"]['lowercase_num'])
-                self.excludeLowercase = self.config["default"]['excludeLowercase']
-                self.uppercase = int(self.config["default"]['uppercase'])
-                self.uppercase_num = int(self.config["default"]['uppercase_num'])
-                self.excludeUppercase = self.config["default"]['excludeUppercase']
-                self.digit = int(self.config["default"]['digit'])
-                self.digit_num = int(self.config["default"]['digit_num'])
-                self.excludeDigit = self.config["default"]['excludeDigit']
-                self.symbol = int(self.config["default"]['symbol'])
-                self.symbol_num = int(self.config["default"]['symbol_num'])
-                self.excludeSymbol = self.config["default"]['excludeSymbol']
+            self.pwlength = int(self.config["user"]['pwlength'])
+            self.lowercase = int(self.config["user"]['lowercase'])
+            self.lowercase_num = int(self.config["user"]['lowercase_num'])
+            self.excludeLowercase = self.config["user"]['excludeLowercase']
+            self.uppercase = int(self.config["user"]['uppercase'])
+            self.uppercase_num = int(self.config["user"]['uppercase_num'])
+            self.excludeUppercase = self.config["user"]['excludeUppercase']
+            self.digit = int(self.config["user"]['digit'])
+            self.digit_num = int(self.config["user"]['digit_num'])
+            self.excludeDigit = self.config["user"]['excludeDigit']
+            self.symbol = int(self.config["user"]['symbol'])
+            self.symbol_num = int(self.config["user"]['symbol_num'])
+            self.excludeSymbol = self.config["user"]['excludeSymbol']
         except:
-            print('Default configuration file is missing or not readable. Using default values and creating a new configuration file')
-            self.pwlength = 8
-            self.lowercase = 1
-            self.lowercase_num = 1
-            self.excludeLowercase = ""
-            self.uppercase = 1
-            self.uppercase_num = 1
-            self.excludeUppercase = ""
-            self.digit = 1
-            self.digit_num = 1
-            self.excludeDigit = ""
-            self.symbol = 0
-            self.symbol_num = 0
-            self.excludeSymbol = ""
+            print('User configuration is missing or not readable. Trying default configuration')
+            self.pwlength = int(self.config["default"]['pwlength'])
+            self.lowercase = int(self.config["default"]['lowercase'])
+            self.lowercase_num = int(self.config["default"]['lowercase_num'])
+            self.excludeLowercase = self.config["default"]['excludeLowercase']
+            self.uppercase = int(self.config["default"]['uppercase'])
+            self.uppercase_num = int(self.config["default"]['uppercase_num'])
+            self.excludeUppercase = self.config["default"]['excludeUppercase']
+            self.digit = int(self.config["default"]['digit'])
+            self.digit_num = int(self.config["default"]['digit_num'])
+            self.excludeDigit = self.config["default"]['excludeDigit']
+            self.symbol = int(self.config["default"]['symbol'])
+            self.symbol_num = int(self.config["default"]['symbol_num'])
+            self.excludeSymbol = self.config["default"]['excludeSymbol']
             
         self.check_config()
     
@@ -125,25 +106,25 @@ class PasswordGenerator():
         (~/.config/simple-pwgen/config.cfg)
         in user's home directory.
         """
-        if os.path.exists(DEFAULT_CONFIG_FILE):
+        if os.path.exists(CONFIG_FILE):
             pass
         else:
             self.config['default'] = {
-                'pwlength': self.pwlength,
-                'lowercase': self.lowercase,
-                'lowercase_num': self.lowercase_num,
-                'excludeLowercase': self.excludeLowercase,
-                'uppercase': self.uppercase,
-                'uppercase_num': self.uppercase_num,
-                'excludeUppercase': self.excludeUppercase,
-                'digit': self.digit,
-                'digit_num': self.digit_num,
-                'excludeDigit': self.excludeDigit,
-                'symbol': self.symbol,
-                'symbol_num': self.symbol_num,
-                'excludeSymbol': self.excludeSymbol
+                'pwlength': 8,
+                'lowercase': 1,
+                'lowercase_num': 1,
+                'excludeLowercase': "",
+                'uppercase': 1,
+                'uppercase_num': 1,
+                'excludeUppercase': "",
+                'digit': 1,
+                'digit_num': 1,
+                'excludeDigit': "",
+                'symbol': 0,
+                'symbol_num': 0,
+                'excludeSymbol': ""
             }
-            with open(DEFAULT_CONFIG_FILE, 'w') as f:
+            with open(CONFIG_FILE, 'w') as f:
                 self.config.write(f)
         
     def check_config(self):
@@ -326,4 +307,6 @@ class PasswordGenerator():
     
 if __name__ == "__main__":
     PasswordGenerator()
+    passw = PasswordGenerator().GeneratePW()
+    print(passw)
     

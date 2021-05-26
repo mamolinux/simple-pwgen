@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 # import the necessary modules!
-import configparser
 import gettext
 import gi
 import locale
@@ -14,7 +13,7 @@ warnings.filterwarnings("ignore")
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk
 
-from common import DEFAULT_CONFIG_FILE, USRCONFIG_FILE, PasswordGenerator
+from common import CONFIG_FILE, PasswordGenerator
 
 setproctitle.setproctitle("simple-pwgen")
 
@@ -49,7 +48,6 @@ class SimplepwgenWindow():
         self.application = application
         self.settings = Gio.Settings(schema_id="org.x.simple-pwgen")
         self.generator = PasswordGenerator()
-        self.config = configparser.ConfigParser()
         self.icon_theme = Gtk.IconTheme.get_default()
         
         # Set the Glade file
@@ -114,57 +112,24 @@ class SimplepwgenWindow():
         # Show all drop-down menu options
         menu.show_all()
         
-        self.load_config()
+        self.load_conf()
         
-    def load_config(self):
+    def load_conf(self):
         
-        try:
-            try:
-                self.config.read(USRCONFIG_FILE)
-                self.pwlengthfield.set_text(self.config["user"]['pwlength'])
-                self.lcase_switch.set_active(int(self.config["user"]['lowercase']))
-                self.minlcase_num.set_text(self.config["user"]['lowercase_num'])
-                self.excludelcases_field.set_text(self.config["user"]['excludeLowercase'])
-                self.ucase_switch.set_active(int(self.config["user"]['uppercase']))
-                self.minUcase_num.set_text(self.config["user"]['uppercase_num'])
-                self.excludeUcases_field.set_text(self.config["user"]['excludeUppercase'])
-                self.digit_switch.set_active(int(self.config["user"]['digit']))
-                self.mindigits_num.set_text(self.config["user"]['digit_num'])
-                self.excludedigits_field.set_text(self.config["user"]['excludeDigit'])
-                self.symbol_switch.set_active(int(self.config["user"]['symbol']))
-                self.minsymbol_num.set_text(self.config["user"]['symbol_num'])
-                self.excludesymbol_field.set_text(self.config["user"]['excludeSymbol'])
-            except:
-                print('User configuration file is missing or not readable. Trying default configuration file')
-                self.config.read(DEFAULT_CONFIG_FILE)
-                self.pwlengthfield.set_text(self.config["default"]['pwlength'])
-                self.lcase_switch.set_active(int(self.config["default"]['lowercase']))
-                self.minlcase_num.set_text(self.config["default"]['lowercase_num'])
-                self.excludelcases_field.set_text(self.config["default"]['excludeLowercase'])
-                self.ucase_switch.set_active(int(self.config["default"]['uppercase']))
-                self.minUcase_num.set_text(self.config["default"]['uppercase_num'])
-                self.excludeUcases_field.set_text(self.config["default"]['excludeUppercase'])
-                self.digit_switch.set_active(int(self.config["default"]['digit']))
-                self.mindigits_num.set_text(self.config["default"]['digit_num'])
-                self.excludedigits_field.set_text(self.config["default"]['excludeDigit'])
-                self.symbol_switch.set_active(int(self.config["default"]['symbol']))
-                self.minsymbol_num.set_text(self.config["default"]['symbol_num'])
-                self.excludesymbol_field.set_text(self.config["default"]['excludeSymbol'])
-        except:
-            print('Default configuration file is missing or not readable. Using default values')
-            self.pwlengthfield.set_text("8")
-            self.lcase_switch.set_active(1)
-            self.minlcase_num.set_text("1")
-            self.excludelcases_field.set_text("")
-            self.ucase_switch.set_active(1)
-            self.minUcase_num.set_text("1")
-            self.excludeUcases_field.set_text("")
-            self.digit_switch.set_active(1)
-            self.mindigits_num.set_text("1")
-            self.excludedigits_field.set_text("")
-            self.symbol_switch.set_active(0)
-            self.minsymbol_num.set_text("0")
-            self.excludesymbol_field.set_text("")
+        self.generator.load_config()
+        self.pwlengthfield.set_text(str(self.generator.pwlength))
+        self.lcase_switch.set_active(self.generator.lowercase)
+        self.minlcase_num.set_text(str(self.generator.lowercase_num))
+        self.excludelcases_field.set_text(str(self.generator.excludeLowercase))
+        self.ucase_switch.set_active(self.generator.uppercase)
+        self.minUcase_num.set_text(str(self.generator.uppercase_num))
+        self.excludeUcases_field.set_text(str(self.generator.excludeUppercase))
+        self.digit_switch.set_active(self.generator.digit)
+        self.mindigits_num.set_text(str(self.generator.digit_num))
+        self.excludedigits_field.set_text(str(self.generator.excludeDigit))
+        self.symbol_switch.set_active(self.generator.symbol)
+        self.minsymbol_num.set_text(str(self.generator.symbol_num))
+        self.excludesymbol_field.set_text(str(self.generator.excludeSymbol))
             
     def open_about(self, widget):
         dlg = Gtk.AboutDialog()
@@ -195,13 +160,13 @@ class SimplepwgenWindow():
                 w.destroy()
         dlg.connect("response", close)
         dlg.show()
-
+    
     def on_quit(self, widget):
         self.application.quit()
     
     def on_reset_button(self, widget):
         try:
-            self.config.read(DEFAULT_CONFIG_FILE)
+            self.config.read(CONFIG_FILE)
             self.pwlengthfield.set_text(self.config["default"]['pwlength'])
             self.lcase_switch.set_active(int(self.config["default"]['lowercase']))
             self.minlcase_num.set_text(self.config["default"]['lowercase_num'])
@@ -234,8 +199,8 @@ class SimplepwgenWindow():
         """Saves user configurations to config file.
 
         Saves user-defined configurations to config file.
-        If the config file does not exist, it creates a new config file
-        (~/.config/simple-pwgen/config.cfg)
+        If the config file does not exist, it creates a new
+        config file (~/.config/simple-pwgen/config.cfg)
         in user's home directory.
         """
         if self.lcase_switch.get_active():
@@ -255,7 +220,7 @@ class SimplepwgenWindow():
         else:
             symbol = 0
             
-        self.config['user'] = {
+        self.generator.config['user'] = {
             'pwlength': self.pwlengthfield.get_text(),
             'lowercase': lcase,
             'lowercase_num': self.minlcase_num.get_text(),
@@ -270,9 +235,8 @@ class SimplepwgenWindow():
             'symbol_num': self.minsymbol_num.get_text(),
             'excludeSymbol': self.excludesymbol_field.get_text()
         }
-        # print(self.config['user'])
-        with open(USRCONFIG_FILE, 'w') as f:
-                self.config.write(f)
+        with open(CONFIG_FILE, 'w') as f:
+                self.generator.config.write(f)
         
     def on_generate_button(self, widget):
         self.passwordfield = self.builder.get_object("passwordfield")
