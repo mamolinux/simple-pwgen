@@ -1,3 +1,17 @@
+simple-pwgen (1.0.2) stable; urgency=medium
+
+  * fixes #4; Correct spelling mistake in documentation.
+  * Update documentation.
+  * fixes #1; using single configuration file for both backend and GUI.
+  * Update About dialog
+  * Update icon
+  * fixes #2, closes #2; fixes wrong path to .ui file
+  * wrong ui
+  * wrong location of .ui
+  * Add screenshots
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Thu, 27 May 2021 01:09:14 +0530
+
 simple-pwgen (1.0.1) stable; urgency=medium
 
   * Initial release.
