@@ -36,7 +36,4 @@ jobs:
         run: sudo apt install python3 python3-gi python3-configobj python3-setproctitle
         
       - name: make
-        run: |
-          sudo cp -R usr /
-          simple-pwgen
-        
+        run: sudo ./test
