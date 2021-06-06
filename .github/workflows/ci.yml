@@ -37,6 +37,6 @@ jobs:
         
       - name: make
         run: |
-          sudo cp usr /
+          sudo cp -R usr /
           simple-pwgen
         
