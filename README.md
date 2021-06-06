@@ -1,6 +1,12 @@
-# Simple Password Generator
-Very simple Python3-based GUI application to generate random password.
+<h1 align="center">Simple Password Generator</h1>
+<p align="center">
+    <img src="https://github.com/hsbasu/simple-pwgen/blob/master/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg?sanitize=true"
+        height="130">
+</p>
 
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+
+Very simple Python3-based GUI application to generate random password.
 ### Features:
 
 It lets an user choose:
