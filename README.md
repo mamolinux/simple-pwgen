@@ -5,6 +5,13 @@
 </p>
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![CI](https://github.com/hsbasu/simple-pwgen/workflows/CI/badge.svg)](https://github.com/hsbasu/simple-pwgen/actions/workflows/ci.yml?query=workflow%3ACI+branch%3Amaster)
+[![Build](https://github.com/hsbasu/simple-pwgen/workflows/CodeQL/badge.svg)](https://github.com/hsbasu/simple-pwgen/actions/workflows/codeql-analysis.yml)
+![Downloads](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads&style=flat-square)
+![License](https://img.shields.io/github/license/hsbasu/simple-pwgen?label=License)
+
+
+
 
 Very simple Python3-based GUI application to generate random password.
 ### Features:
