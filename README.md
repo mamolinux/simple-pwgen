@@ -9,7 +9,8 @@
 ![License](https://img.shields.io/github/license/hsbasu/simple-pwgen?label=License)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/hsbasu/simple-pwgen?label=Repo%20size)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/hsbasu/simple-pwgen?label=Stable%20Release)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/hsbasu/simple-pwgen?label=Latest%20Stable%20Release)
+
 ![Downloads](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads&style=flat-square)
 ![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.2/simple-pwgen_1.0.2_all.deb?color=blue&label=Downloads%40Latest)
 
