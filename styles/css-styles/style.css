@@ -1,0 +1,43 @@
+html {font-family: 'Open Sans', sans-serif; font-size: 150%;}
+*{box-sizing: border-box;}
+body {background-color: #2C001E; color: #7FFF00; margin: 5px; text-align: justify; padding: 10px 10px 10px 10px;}
+
+/* Style the header */
+header {padding: 0.5%;}
+
+/* Style the navigation bar */
+nav {background-color: #008080; padding: 10px; width: 100%;}
+
+/* Style the footer */
+footer {background-color: #666; padding: 5px; color: #7FFF00; text-align: center;}
+
+.w3-left{float: left}
+.w3-right{float: right}
+.w3-center{margin: auto; width: 100%;}
+
+.bar {overflow: auto; text-align: center;}
+.bar .bar-item{border: 5px; text-decoration: none; text-align: center;}
+
+/* Clear floats after the columns */
+section:after {content: ""; display: table; clear: both;}
+article{padding: 10px;}
+article.w3-center {padding: 10px; width: 95%;}
+
+a:visited{color: turquoise;}
+a:link, a:visited {padding: 2px; text-align: center; text-decoration: none; display: inline-block;}
+.services{color: red; text-align: center;}
+:hover.services{opacity: 1; background-color: yellowgreen;}
+
+p, li{line-height: 150%;}
+li, ol, ul {margin-left: 1.5%;}
+img {display: block; margin: 5px auto;}
+
+code{background-color: #FDF6E3; color: black; padding: 5px 5px; border-radius: 5px;}
+.code {display: block;}
+
+.line {
+	background: transparent url(images/styles/line.png) repeat-x;
+	height: 2px;
+	padding: 20px 0 0 0;
+	line-break: 0px;
+}
