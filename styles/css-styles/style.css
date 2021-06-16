@@ -6,37 +6,63 @@ body {background-color: #2C001E; color: #7FFF00; margin: 5px; text-align: justif
 header {padding: 0.5%;}
 
 /* Style the navigation bar */
-nav {background-color: #008080; padding: 10px; width: 100%;}
+nav {color: white; background-color: #7FFF00; padding: 5px; width: 100%; border-radius: 10px;}
 
 /* Style the footer */
-footer {background-color: #666; padding: 5px; color: #7FFF00; text-align: center;}
+footer {background-color: #666; color: #7FFF00; padding: 5px; text-align: center; border-radius: 10px;}
 
-.w3-left{float: left}
-.w3-right{float: right}
-.w3-center{margin: auto; width: 100%;}
+.w3-left{float: left; text-align: left;}
+.w3-right{float: right; text-align: right;}
+.w3-center{margin: auto; width: 100%; text-align: center;}
 
+/* Navigation bar */
+.stickey {position: sticky; top: 0;}
 .bar {overflow: auto; text-align: center;}
-.bar .bar-item{border: 5px; text-decoration: none; text-align: center;}
+.bar .bar-item{width: 19%; text-decoration: none; text-align: center;}
+a:hover.bar{background-color: unset;}
+a:hover.bar-item {background-color: #00008B; color: white;}
 
 /* Clear floats after the columns */
 section:after {content: ""; display: table; clear: both;}
-article{padding: 10px;}
-article.w3-center {padding: 10px; width: 95%;}
+article {padding: 10px; width: 95%; text-align: left;}
 
-a:visited{color: turquoise;}
-a:link, a:visited {padding: 2px; text-align: center; text-decoration: none; display: inline-block;}
-.services{color: red; text-align: center;}
-:hover.services{opacity: 1; background-color: yellowgreen;}
+/* all links */
+a {padding: 2px; text-align: center; text-decoration: none; display: inline-block;}
+a:hover{opacity: 1; background-color: yellowgreen;}
 
+/* all text, image and lists */
 p, li{line-height: 150%;}
 li, ol, ul {margin-left: 1.5%;}
 img {display: block; margin: 5px auto;}
+
+/* social services at footer */
+.services{color: yellowgreen; text-align: center;}
+a:hover.services{opacity: 1; background-color: unset;}
+
+img.services {
+	margin: 0px;
+}
+
+a.services{
+	opacity: 0.5;
+	padding: 0px;
+}
+
+p.services{
+	line-height: 0px;
+	padding: 0px;
+	margin: 2px;
+}
+
+p.crights{
+	margin: 2px;
+}
 
 code{background-color: #FDF6E3; color: black; padding: 5px 5px; border-radius: 5px;}
 .code {display: block;}
 
 .line {
-	background: transparent url(images/styles/line.png) repeat-x;
+	background: transparent url(styles/icons/line.png) repeat-x;
 	height: 2px;
 	padding: 20px 0 0 0;
 	line-break: 0px;

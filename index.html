@@ -3,28 +3,58 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Repository for Freedom OS</title>
+    <title>Simple Password Generator - Very simple Python3-based GUI application to generate random password</title>
     <link href="styles/css-styles/style.css" rel="stylesheet" type="text/css">
   </head>
 	
   <body>
     
     <!-- Begin Header -->
-    <nav class="w3-center bar">
-      <a href="https://hsbasu.github.io" target="_blank">
-        <picture>
-          <source srcset="styles/icons/freedom-logo.png" media="(max-width: 900px)">
-          <source srcset="styles/icons/freedom-small-logo.png">
-          <img src="styles/icons/freedom-small-logo.png" alt="logo" style="width:auto;">
-        </picture>
-      </a>
-    </nav>
+    <header>
+      <div class="w3-center bar">
+        <a class="bar" href="https://hsbasu.github.io" target="_blank">
+          <picture>
+            <source srcset="styles/icons/freedom-logo.png" media="(max-width: 900px)">
+            <source srcset="styles/icons/freedom-small-logo.png">
+            <img src="styles/icons/freedom-small-logo.png" alt="freedom-logo">
+          </picture>
+	      </a>
+      </div>
+    </header>
     <!-- End Header -->
+
+    <!-- Begin Navigation -->
+    <nav class="stickey bar">
+      <div class="bar">
+				<h1 class="w3-center">
+          <a class="bar-item" href="https://hsbasu.github.io/index.html">Home</a>
+          <a class="bar-item" href="https://hsbasu.github.io/research.html">Research</a>
+          <a class="bar-item" href="https://hsbasu.github.io/publications.html">Publications</a>
+          <a class="bar-item" href="https://hsbasu.github.io/hobby.html">Fun Projects</a>
+          <a class="bar-item" href="https://hsbasu.github.io/aboutme.html">About Me</a>
+			  </h1>
+      </div>
+    </nav>
+    <!-- End Navigation -->
     
     <!-- Begin Content -->
     <section>
-      <article class="w3-center">
-        <h1>Simple Password Generator</h1>
+      <article>
+        <h1 align="center">Simple Password Generator</h1>
+        <p align="center">
+            <img src="https://github.com/hsbasu/simple-pwgen/blob/master/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg?sanitize=true" height="130">
+        </p>
+
+        <p float="left">
+          <img src="https://img.shields.io/github/workflow/status/hsbasu/simple-pwgen/CI/master?label=CI%20Build" alt="GitHub CI Workflow Status">
+          <img src="https://img.shields.io/github/workflow/status/hsbasu/simple-pwgen/CodeQL/master?label=CodeQL%20Build" alt="GitHub CodeQL Workflow Status">
+          <img src="https://img.shields.io/github/license/hsbasu/simple-pwgen?label=License" alt="License">
+          <img src="https://img.shields.io/github/repo-size/hsbasu/simple-pwgen?label=Repo%20size" alt="GitHub repo size">
+          <img src="https://img.shields.io/github/v/release/hsbasu/simple-pwgen?label=Latest%20Stable%20Release" alt="GitHub release (latest by date)">
+          <img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads&style=flat-square" alt="Downloads">
+          <img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.2/simple-pwgen_1.0.2_all.deb?color=blue&label=Downloads%40Latest" alt="GitHub release (latest by date and asset)">
+        </p>
+        
         Very simple Python3-based GUI application to generate random password.
         
         <h3>Features:</h3>
@@ -43,12 +73,13 @@
         </ol>
         
         <h3>Dependencies:</h3>
-        ```</br>
-        python3</br>
-        python3-gi</br>
-        python3-configobj</br>
-        python3-setproctitle</br>
-        ```
+        <code class="code">
+          python3</br>
+          python3-gi</br>
+          python3-configobj</br>
+          python3-setproctitle</br>
+        </code>
+        
         <h3>Download latest version:</h3>
         <a href="https://github.com/hsbasu/simple-pwgen/releases">Click Here</a>
       </article>
@@ -56,9 +87,36 @@
     <!-- End Content -->
 
     <!-- Begin Footer -->
-    <footer>
-  		<div>
-  			<p class="w3-center">&copy;2021 Himadri Sekhar Basu</p>
+    <footer class="bar">
+			<div class="w3-right">
+				<p class="services">
+          <a class="services" href="https://twitter.com/hsbasu">
+            <img class="services" src="styles/icons/social/twitter.png" alt="Twitter">
+          </a>
+          <a class="services" href="skype:live:hsbasu">
+            <img class="services" src="styles/icons/social/skype.png" alt="Skype">
+          </a>
+          <a class="services" href="https://www.linkedin.com/in/hsbasu" target="_blank">
+            <img class="services" src="styles/icons/social/linkedin.png" alt="LinkedIN">
+          </a>
+          <a class="services" href="https://github.com/hsbasu">
+            <img class="services" src="styles/icons/social/github.png" alt="Github">
+          </a>
+          <a class="services" href="https://www.facebook.com/bhimadri" target="_blank">
+            <img class="services" src="styles/icons/social/facebook.png" alt="Facebook">
+          </a>
+          <a class="services" href="mailto:hsb10@iitbbs.ac.in">
+            <img class="services" src="styles/icons/social/email.png" alt="Email">
+          </a>
+          <a class="services" href="https://hsbasu.github.io" target="_blank">
+            <img class="services" src="styles/icons/social/site.png" alt="Site">
+          </a>
+				</p>
+      </div>
+  		<div class="w3-left">
+  			<p class="crights">
+          &copy;2021 Himadri Sekhar Basu
+        </p>
   		</div>
 	  </footer>
 	  <!-- End Footer -->
