@@ -22,21 +22,21 @@ StartupNotify=false
 NotShowIn=KDE;
 """
 
-additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/simple-pwgen.desktop", prefix, _("Simple Password Generator"), _("Very simple GUI based app to generate random password"), suffix)
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/simple-pwgen.desktop", prefix, _("Simple Password Generator"), _("Very simple Python3-based GUI application to generate random password."), suffix)
 
-# prefix = "[Desktop Entry]\n"
+prefix = "[Desktop Entry]\n"
 
-# suffix = """Exec=simple-pwgen
-# Icon=simple-pwgen
-# Terminal=false
-# Type=Application
-# Encoding=UTF-8
-# Categories=Application;Utility;
-# X-KDE-StartupNotify=false
-# OnlyShowIn=KDE;
-# """
+suffix = """Exec=simple-pwgen
+Icon=simple-pwgen
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+X-KDE-StartupNotify=false
+OnlyShowIn=KDE;
+"""
 
-# additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/simple-pwgen.desktop", prefix, _("Simple Password Generator"), _("Very simple GUI based app to generate random password"), suffix, genericName=_("Simple PWGen"))
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/simple-pwgen.desktop", prefix, _("Simple Password Generator"), _("Very simple Python3-based GUI application to generate random password."), suffix, genericName=_("Simple Password Generator"))
 
 # prefix = """[Desktop Entry]
 # Type=Directory
