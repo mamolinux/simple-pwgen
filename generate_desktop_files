@@ -37,12 +37,3 @@ OnlyShowIn=KDE;
 """
 
 additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/simple-pwgen.desktop", prefix, _("Simple Password Generator"), _("Very simple Python3-based GUI application to generate random password."), suffix, genericName=_("Simple Password Generator"))
-
-# prefix = """[Desktop Entry]
-# Type=Directory
-# """
-
-# suffix = """Icon=applications-webapps
-# """
-
-# additionalfiles.generate(DOMAIN, PATH, "usr/share/desktop-directories/webapps-webapps.directory", prefix, _("Web"), None, suffix)
