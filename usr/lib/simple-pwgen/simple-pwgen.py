@@ -118,18 +118,46 @@ class SimplepwgenWindow():
         
         self.generator.load_config()
         self.pwlengthfield.set_text(str(self.generator.pwlength))
+        
         self.lcase_switch.set_active(self.generator.lowercase)
         self.minlcase_num.set_text(str(self.generator.lowercase_num))
         self.excludelcases_field.set_text(str(self.generator.excludeLowercase))
+        if not self.generator.lowercase:
+            self.minlcase_num.set_sensitive(False)
+            self.excludelcases_field.set_sensitive(False)
+        else:
+            self.minlcase_num.set_sensitive(True)
+            self.excludelcases_field.set_sensitive(True)
+        
         self.ucase_switch.set_active(self.generator.uppercase)
         self.minUcase_num.set_text(str(self.generator.uppercase_num))
         self.excludeUcases_field.set_text(str(self.generator.excludeUppercase))
+        if not self.generator.uppercase:
+            self.minUcase_num.set_sensitive(False)
+            self.excludeUcases_field.set_sensitive(False)
+        else:
+            self.minUcase_num.set_sensitive(True)
+            self.excludeUcases_field.set_sensitive(True)
+        
         self.digit_switch.set_active(self.generator.digit)
         self.mindigits_num.set_text(str(self.generator.digit_num))
         self.excludedigits_field.set_text(str(self.generator.excludeDigit))
+        if not self.generator.digit:
+            self.mindigits_num.set_sensitive(False)
+            self.excludedigits_field.set_sensitive(False)
+        else:
+            self.mindigits_num.set_sensitive(True)
+            self.excludedigits_field.set_sensitive(True)
+            
         self.symbol_switch.set_active(self.generator.symbol)
         self.minsymbol_num.set_text(str(self.generator.symbol_num))
         self.excludesymbol_field.set_text(str(self.generator.excludeSymbol))
+        if not self.generator.symbol:
+            self.minsymbol_num.set_sensitive(False)
+            self.excludesymbol_field.set_sensitive(False)
+        else:
+            self.minsymbol_num.set_sensitive(True)
+            self.excludesymbol_field.set_sensitive(True)
             
     def open_about(self, widget):
         dlg = Gtk.AboutDialog()
@@ -141,7 +169,7 @@ class SimplepwgenWindow():
         dlg.set_program_name(_("Simple Password Generator"))
         dlg.set_version("__DEB_VERSION__")
         dlg.set_comments(_("Very simple GUI based app to generate random password"))
-        dlg.set_website("https://www.github.com/hsbasu/simple-pwgen")
+        dlg.set_website("https://hsbasu.github.io/simple-pwgen")
         dlg.set_authors(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
         dlg.set_documenters(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
         try:
@@ -237,6 +265,8 @@ class SimplepwgenWindow():
         }
         with open(CONFIG_FILE, 'w') as f:
                 self.generator.config.write(f)
+        
+        self.load_conf()
         
     def on_generate_button(self, widget):
         self.passwordfield = self.builder.get_object("passwordfield")
