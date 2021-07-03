@@ -12,7 +12,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hsbasu/simple-pwgen?label=Latest%20Stable%20Release)](https://github.com/hsbasu/simple-pwgen/releases/latest)
 
 ![Downloads](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads&style=flat-square)
-[![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.2/simple-pwgen_1.0.2_all.deb?color=blue&label=Downloads%40Latest)](https://github.com/hsbasu/simple-pwgen/releases/download/1.0.2/simple-pwgen_1.0.2_all.deb)
+[![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.3/simple-pwgen_1.0.3_all.deb?color=blue&label=Downloads%40Latest)](https://github.com/hsbasu/simple-pwgen/releases/download/1.0.3/simple-pwgen_1.0.3_all.deb)
 
 Very simple Python3-based GUI application to generate random password.
 

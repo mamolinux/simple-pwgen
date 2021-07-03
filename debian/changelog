@@ -1,3 +1,10 @@
+simple-pwgen (1.0.3) stable; urgency=medium
+
+  * Add Sensitivity of case fields (#14)
+  * Modify .ui to avoid two titles in window decoration (#5)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sat, 03 Jul 2021 20:08:37 +0530
+
 simple-pwgen (1.0.2) stable; urgency=medium
 
   [ Himadri Sekhar Basu ]
