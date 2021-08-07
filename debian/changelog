@@ -1,3 +1,10 @@
+simple-pwgen (1.0.4) stable; urgency=medium
+
+  * Update copyright in individual files.
+  * Add copyright in individual files.
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sat, 07 Aug 2021 23:06:47 +0530
+
 simple-pwgen (1.0.3) stable; urgency=medium
 
   * Add Sensitivity of case fields (#14)

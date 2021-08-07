@@ -12,20 +12,16 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hsbasu/simple-pwgen?label=Latest%20Stable%20Release)](https://github.com/hsbasu/simple-pwgen/releases/latest)
 
 ![Downloads](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads&style=flat-square)
-[![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.3/simple-pwgen_1.0.3_all.deb?color=blue&label=Downloads%40Latest)](https://github.com/hsbasu/simple-pwgen/releases/download/1.0.3/simple-pwgen_1.0.3_all.deb)
+[![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.4/simple-pwgen_1.0.4_all.deb?color=blue&label=Downloads%40Latest)](https://github.com/hsbasu/simple-pwgen/releases/download/1.0.4/simple-pwgen_1.0.4_all.deb)
 
 Very simple Python3-based GUI application to generate secure and random password.
 
 ### Contents
 
   - [Features](#features)
-
   - [Dependencies](#dependencies)
-
   - [Installation](#how-to-build-and-install)
-
     - [Debian/Ubuntu based systems](#debianubuntu-based-systems)
-	
     - [Other Linux-based systems](#other-linux-based-systems)
 
 ### Features
@@ -51,6 +47,7 @@ python3-tldextract
 	sudo apt install python3 python3-configobj python3-gi \
     python3-setproctitle python3-tldextract
     ```
+
 2. There are two methods, this app can be installed/used:
 	1. **Option 1:** Manually copying necessary files to root (`/`). For that, follow the steps below:
 		1. [**Optional**] To make translations/locales in languages other than **English**, run:
@@ -71,15 +68,16 @@ python3-tldextract
     
 	2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
         1. from the `/path/to/repo` run:
-		```
-		dpkg-buildpackage --no-sign
-		```
+			```
+			dpkg-buildpackage --no-sign
+			```
+		
 		This will create a `webapp-manager_*.deb` package at `../path/to/repo`.
         2. Install the debian package using
-        ```
-        sudo dpkg -i *.deb
-        sudo apt install -f
-        ```
+	        ```
+	        sudo dpkg -i *.deb
+	        sudo apt install -f
+	        ```
 
 #### Other Linux-based systems
 From instructions for [Debian/Ubuntu based systems](#debianubuntu-based-systems), follow:
