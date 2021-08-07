@@ -14,16 +14,20 @@
 ![Downloads](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads&style=flat-square)
 [![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.3/simple-pwgen_1.0.3_all.deb?color=blue&label=Downloads%40Latest)](https://github.com/hsbasu/simple-pwgen/releases/download/1.0.3/simple-pwgen_1.0.3_all.deb)
 
-Very simple Python3-based GUI application to generate random password.
+Very simple Python3-based GUI application to generate secure and random password.
 
 ### Contents
 
- - [Features](#features)
- - [Dependencies](#dependencies)
- - [Installation](#how-to-build-and-install)
+  - [Features](#features)
+
+  - [Dependencies](#dependencies)
+
+  - [Installation](#how-to-build-and-install)
+
     - [Debian/Ubuntu based systems](#debianubuntu-based-systems)
+	
     - [Other Linux-based systems](#other-linux-based-systems)
- 
+
 ### Features
 
 It lets an user choose:
