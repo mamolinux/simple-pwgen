@@ -1,28 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-<!--
-Copyright (C) 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-
-This file is part of simple-pwgen.
-
-simple-pwgen is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-simple-pwgen is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with simple-pwgen. If not, see <http://www.gnu.org/licenses/>
-or write to the Free Software Foundation, Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301, USA..
-
-Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
--->
-
 <svg
    xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -37,8 +13,10 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
    viewBox="0 0 67.733307 67.733328"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="simple-pwgen.svg">
+  <title
+     id="title872">simple-pwgen</title>
   <defs
      id="defs2">
     <linearGradient
@@ -92,15 +70,15 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="126.61703"
+     inkscape:cx="40.36703"
      inkscape:cy="106.32916"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-width="1904"
+     inkscape:window-height="1015"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
      inkscape:document-rotation="0">
     <inkscape:grid
@@ -117,8 +95,40 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>simple-pwgen</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Himadri Sekhar basu</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Copyright (C) 2021 Himadri Sekhar Basu &lt;hsb10@iitbbs.ac.in&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Himadri Sekhar Basu &lt;hsb10@iitbbs.ac.in&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -167,8 +177,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
            x="300"
            y="620.51971"
            style="" /></flowRegion><flowPara
-         id="flowPara4593" /></flowRoot>
-    <g
+         id="flowPara4593" /></flowRoot>    <g
        id="g881"
        style="opacity:1"
        transform="matrix(0.03969124,1.2749144,-0.73947024,-0.01878384,448.57754,170.22286)" />
