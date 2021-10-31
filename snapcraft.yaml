@@ -1,0 +1,20 @@
+name: simple-pwgen
+version: '1.0.4'
+summary: Simple Password Generator
+description: |
+  Very simple Python3-based GUI application
+  to generate random password.
+confinement: devmode
+base: core18
+
+parts:
+  simple-pwgen:
+    plugin: python
+    python-version: python3
+    source: https://github.com/hsbasu/simple-pwgen.git
+    stage-packages:
+      - python-six
+
+apps:
+  simple-pwgen:
+    command: bin/simple-pwgen
