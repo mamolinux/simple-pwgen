@@ -326,7 +326,6 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                   <object class="GtkEntry" id="excludesymbols">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="visibility">False</property>
                     <property name="width-chars">40</property>
                     <property name="caps-lock-warning">False</property>
                     <property name="placeholder-text" translatable="yes">Exclude Symbols and Puncuations</property>
