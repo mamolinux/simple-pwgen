@@ -1,5 +1,7 @@
 name: simple-pwgen
+title: Simple Password Generator
 version: '1.0.4'
+contact: https://github.com/hsbasu
 summary: Simple Password Generator
 description: |
   Very simple Python3-based GUI application
