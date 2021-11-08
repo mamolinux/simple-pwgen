@@ -1,3 +1,13 @@
+simple-pwgen (1.0.5) stable; urgency=medium
+
+  * Update snap support
+  * Update debian compatibility 9 to 10
+  * Hide generated password to avoid shoulder-surfer.; fixes #19
+  * Add snap support (#18)
+  * Update svg icon to fix Gdk-pixbuff error. (#16)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 08 Nov 2021 12:22:47 +0530
+
 simple-pwgen (1.0.4) stable; urgency=medium
 
   * Update copyright in individual files.
