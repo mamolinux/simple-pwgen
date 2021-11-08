@@ -324,11 +324,13 @@ class PasswordGenerator():
             
             else:  # adds a random character from pool
                 password += self.TrueRand.choice(pool)
+                
+        # password=self.TrueRand.choice(password)
             
-        return password  # returns the string
+        return password  # returns the password string
     
 if __name__ == "__main__":
-    PasswordGenerator()
-    passw = PasswordGenerator().GeneratePW()
+    generator = PasswordGenerator()
+    passw = generator.GeneratePW()
     print(passw)
     
