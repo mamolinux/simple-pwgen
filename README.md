@@ -1,6 +1,6 @@
 <h1 align="center">Simple Password Generator</h1>
 <p align="center">
-    <img src="https://github.com/hsbasu/simple-pwgen/blob/master/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg?sanitize=true"
+    <img src="https://raw.githubusercontent.com/hsbasu/simple-pwgen/master/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg?sanitize=true"
         height="130">
 </p>
 
@@ -12,7 +12,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hsbasu/simple-pwgen?label=Latest%20Stable%20Release)](https://github.com/hsbasu/simple-pwgen/releases/latest)
 
 ![Downloads](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads&style=flat-square)
-[![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.4/simple-pwgen_1.0.4_all.deb?color=blue&label=Downloads%40Latest)](https://github.com/hsbasu/simple-pwgen/releases/download/1.0.4/simple-pwgen_1.0.4_all.deb)
+[![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.5-0patch1/simple-pwgen_1.0.5-0patch1_all.deb?color=blue&label=Downloads%40Latest)](https://github.com/hsbasu/simple-pwgen/releases/download/1.0.5-0patch1/simple-pwgen_1.0.5-0patch1_all.deb)
 
 Very simple Python3-based GUI application to generate secure and random password.
 
