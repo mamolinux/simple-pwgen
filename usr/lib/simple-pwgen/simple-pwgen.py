@@ -119,6 +119,14 @@ class SimplepwgenWindow():
 		accel_group = Gtk.AccelGroup()
 		self.window.add_accel_group(accel_group)
 		menu = self.builder.get_object("main_menu")
+		# Add "Shortcuts" option in drop-down menu
+		item = Gtk.ImageMenuItem()
+		item.set_image(Gtk.Image.new_from_icon_name("preferences-desktop-keyboard-shortcuts-symbolic", Gtk.IconSize.MENU))
+		item.set_label(_("Keyboard Shortcuts"))
+		item.connect("activate", self.open_keyboard_shortcuts)
+		key, mod = Gtk.accelerator_parse("<Control>K")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
 		# Add "About" option in drop-down menu
 		item = Gtk.ImageMenuItem()
 		item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
@@ -186,7 +194,17 @@ class SimplepwgenWindow():
 		else:
 			self.minsymbol_num.set_sensitive(True)
 			self.excludesymbol_field.set_sensitive(True)
-			
+	
+	@staticmethod
+	def open_keyboard_shortcuts(self, widget):
+		gladefile = "/usr/share/simple-pwgen/shortcuts.ui"
+		builder = Gtk.Builder()
+		builder.set_translation_domain(APP)
+		builder.add_from_file(gladefile)
+		window = builder.get_object("shortcuts-simplepwgen")
+		window.set_title(_("Simple Password Generator"))
+		window.show()
+	
 	def open_about(self, widget):
 		dlg = Gtk.AboutDialog()
 		dlg.set_transient_for(self.window)

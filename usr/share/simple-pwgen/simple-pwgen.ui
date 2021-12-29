@@ -482,6 +482,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="tooltip-text" translatable="yes">Generate Password.</property>
+                <accelerator key="g" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -495,6 +496,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <accelerator key="h" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -509,6 +511,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="tooltip-text" translatable="yes">Copy Generated Password.</property>
+                <accelerator key="c" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
               </object>
               <packing>
                 <property name="expand">True</property>
