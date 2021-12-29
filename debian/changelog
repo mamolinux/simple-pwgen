@@ -1,3 +1,16 @@
+simple-pwgen (1.0.6) stable; urgency=medium
+
+  * Add keyboard shortcuts
+    
+    - Show keyboard shortcuts in menus
+    - Crtl+G to generate
+    - Crtl+H to Show/Hide
+    - Crtl+C to copy to clipboard
+  * Add gitignore
+  * Update README and remove snapcraft.yaml
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Wed, 29 Dec 2021 20:13:56 +0530
+
 simple-pwgen (1.0.5-0patch1) stable; urgency=medium
 
   * quick fix exclude symbol and generated password entry
