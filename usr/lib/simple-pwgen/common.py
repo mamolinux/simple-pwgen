@@ -24,7 +24,6 @@
 
 # import the necessary modules!
 import configparser
-import datetime
 import gettext
 import locale
 import math
@@ -80,6 +79,7 @@ class PasswordGenerator():
         
         self.config = configparser.ConfigParser()
         self.save_config()
+        self.pool = ascii_lowercase+ascii_uppercase+digits+punctuation
         
     def load_config(self):
         """Loads configurations from config file.
@@ -338,102 +338,116 @@ class PasswordGenerator():
         
         return password  # returns the password string
     
-    def check_pwstrength(self, passwd):
+    def check_pwstrength(passwd):
         score = 0
+        comment = _("Bad Password.")
         if len(passwd) <6:
-            print("Password is too short! ")
-            score = 0
+            comment += _(" Password is too short!")
+            score += 0
         elif len(passwd) <8:
-            score = 20
+            score += 20
         elif len(passwd) <10:
-            score = 40
+            score += 40
         else:
-            score = 60
+            score += 60
         
         if any(c in ascii_lowercase for c in passwd):
             # check for lower case in password
             score += 10
             if passwd == passwd.lower():
                 # check if password is only lower case
-                print("Bad Password. Only lower case used.")
+                comment += _(" Only lower case used.")
                 score -= 5
         else:
-            print("Bad Password. No lower case used.")
+            comment += _(" No lower case used.")
         
         if any(c in ascii_uppercase for c in passwd):
             # check for upper case in password
             score += 10
             if passwd == passwd.upper():
                 # check if password is only upper case
-                print("Bad Password. Only UPPER case used.")
+                comment += _(" Only UPPER case used.")
                 score -= 5
         else:
-            print("Bad Password. No UPPER case used.")
-        
-        if any(c in digits for c in passwd):
-            # check for digits in password
-            score += 10
-            if passwd == passwd.isdigit():
-                # check if password is only upper case
-                print("Bad Password. Only digits used. Is It a PIN")
-                score -= 5
-        else:
-            print("Bad Password. No digits used.")
+            comment += _(" No UPPER case used.")
         
         if any(c in punctuation for c in passwd):
             score += 10
         else:
-            print("Bad Password. No special character.")
+            comment += _(" No special character used.")
         
-        return score
+        if any(c in digits for c in passwd):
+            # check for digits in password
+            score += 10
+            if passwd.isdigit():
+                # check if password is only digit
+                comment += _(" Only digits used. Is It a PIN?")
+                score -= 5
+        else:
+            comment += _(" No digit used.")
+        
+        if (score >90):
+            comment = _("Looks like you know how to generate a Good Password. All types of characters are used.")
+        
+        return [score, comment]
         
     def check_pwentrpy(self, passwd):
-        strength = ["Very Weak", "Weak", "Reasonable", "Fairly Strong", "Strong", "Very Strong"]
+        strength_comment = ["Very Weak", "Weak", "Reasonable", "Fairly Strong", "Strong", "Very Strong", "Super Strong"]
         length = len(passwd)
         pool_size = len(self.pool)
         entropy = length*math.log2(pool_size)
-        comment = strength[0]
+        strength = strength_comment[0]
         
         if entropy < 28:
             # Might keep out family members
-            comment = strength[0]
+            strength = strength_comment[0]
         elif (entropy >= 28 and entropy < 36):
             # Should keep out most people, often good for desktop login passwords
-            comment = strength[1]
+            strength = strength_comment[1]
         elif (entropy >= 36 and entropy < 64):
             # Fairly secure passwords for network and company passwords
-            comment = strength[2]
-        elif (entropy >= 64 and entropy < 96):
+            strength = strength_comment[2]
+        elif (entropy >= 64 and entropy < 80):
             # Suitable for guarding financial information
-            comment = strength[3]
-        elif (entropy >= 96 and entropy < 128):
+            strength = strength_comment[3]
+        elif (entropy >= 80 and entropy < 100):
             # Suitable for guarding financial information
-            comment = strength[4]
+            strength = strength_comment[4]
+        elif (entropy >= 100 and entropy < 128):
+            # Suitable for guarding financial information
+            strength = strength_comment[5]
         elif entropy >= 128:
             # Suitable for guarding financial information
-            comment = strength[5]
+            strength = strength_comment[6]
         
-        num_guess = pow(2, (entropy-1))
-        print("Number of Guesses: "+str(num_guess))
+        num_guess = round(pow(2, (entropy-1)))
         timerq_sc = num_guess/1e15   # Time taken by a modern supecomputer to guess the password with 50% probability
+        if (num_guess > 1e8):
+            # in case number of guess is greater than 1e8, use scientific notation
+            num_guess = "{:e}".format(num_guess)
         
         minute, secnd = divmod(timerq_sc, 60)
         hour, minute = divmod(minute, 60)
         day, hour = divmod(hour, 24)
         month, day = divmod(day, 30)
         year, month = divmod(month, 12)
-        timerq = "%s years %s months %s days %s hours %s minutes %s seconds" % (year, month, day, hour, minute, secnd)
+        timerq = _("%s years %s months %s days %s hours %s minutes %s seconds") % (year, month, day, hour, minute, secnd)
         
-        return [comment, entropy, timerq]
+        return [strength, entropy, num_guess, timerq]
 
 if __name__ == "__main__":
     generator = PasswordGenerator()
     passwd = generator.GeneratePW()
-    print(passwd)
-    pw_strength = generator.check_pwstrength(passwd)
-    print("Score: "+str(pw_strength))
-    [comment, pw_entropy, timerq] = generator.check_pwentrpy(passwd)
+    [pw_score, pw_comment] = generator.check_pwstrength(passwd)
+    [pw_strength, pw_entropy, num_guess_crack, timerq_crack] = generator.check_pwentrpy(passwd)
+    
+    print("Generated Password: "+str(passwd))
+    print("")
+    print("Strength: "+str(pw_strength))
+    print("Score: "+str(pw_score))
     print("Entropy: "+str(pw_entropy))
-    print("Strength: "+str(comment))
-    print("Time required to crack: "+str(timerq))
+    print("Number of Guesses: "+str(num_guess_crack))
+    print("Time required to crack: "+str(timerq_crack))
+    print("Comment: "+str(pw_comment))
+    print("")
     

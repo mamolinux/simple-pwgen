@@ -98,6 +98,13 @@ class SimplepwgenWindow():
 		
 		# output values
 		self.passwordfield = self.builder.get_object("passwordfield")
+		self.strength_bar = self.builder.get_object("strength_bar")
+		self.pw_strength_field = self.builder.get_object("pw_strength_field")
+		self.pw_score_field = self.builder.get_object("pw_score_field")
+		self.pw_guesses_field = self.builder.get_object("pw_guesses_field")
+		self.pw_entropy_field = self.builder.get_object("pw_entropy_field")
+		self.pw_crack_time_field = self.builder.get_object("pw_crack_time_field")
+		self.pw_comment_field = self.builder.get_object("pw_comment_field")
 		
 		# Buttons
 		self.reset_button = self.builder.get_object("reset_button")
@@ -114,6 +121,7 @@ class SimplepwgenWindow():
 		self.showhide_button.connect("clicked", self.on_showhide_button)
 		self.copy_button.connect("clicked", self.on_copy_button)
 		self.quit_button.connect("clicked", self.on_quit)
+		self.passwordfield.connect("changed", self.show_pwstrength)
 		
 		# Menubar
 		accel_group = Gtk.AccelGroup()
@@ -132,7 +140,7 @@ class SimplepwgenWindow():
 		item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
 		item.set_label(_("About"))
 		item.connect("activate", self.open_about)
-		key, mod = Gtk.accelerator_parse("F1")
+		key, mod = Gtk.accelerator_parse("<Control>F1")
 		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
 		menu.append(item)
 		# Add "Quit" option in drop-down menu
@@ -329,6 +337,19 @@ class SimplepwgenWindow():
 	def on_copy_button(self, widget):
 		self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 		self.clipboard.set_text(self.password, -1)
+		
+	def show_pwstrength(self, widget):
+		password = self.passwordfield.get_text()
+		[pw_score, pw_comment] = self.generator.check_pwstrength(password)
+		[pw_strength, pw_entropy, num_guess_crack, timerq_crack] = self.generator.check_pwentrpy(password)
+		
+		self.strength_bar.set_value(pw_score/10)
+		self.pw_strength_field.set_text(pw_strength)
+		self.pw_score_field.set_text(str(pw_score))
+		self.pw_guesses_field.set_text(str(num_guess_crack))
+		self.pw_entropy_field.set_text(str(pw_entropy))
+		self.pw_crack_time_field.set_text(str(timerq_crack))
+		self.pw_comment_field.set_text(pw_comment)
 		
 
 if __name__ == "__main__":
