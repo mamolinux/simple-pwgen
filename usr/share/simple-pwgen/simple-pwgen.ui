@@ -372,7 +372,8 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="tooltip-text" translatable="yes">Resets all values to defaults.</property>
+                    <property name="tooltip-text" translatable="yes">Resets all values to defaults (Press Ctrl+R)</property>
+                    <accelerator key="r" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -386,7 +387,8 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="tooltip-text" translatable="yes">Saves currents values as defaults.</property>
+                    <property name="tooltip-text" translatable="yes">Saves currents values as defaults (Press Ctrl+S)</property>
+                    <accelerator key="s" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -731,7 +733,8 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Generate new password</property>
+                <property name="tooltip-text" translatable="yes">Generate new password(Press Ctrl+G)</property>
+                <accelerator key="g" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -745,7 +748,8 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Show/Hide password</property>
+                <property name="tooltip-text" translatable="yes">Show/Hide password (Press Ctrl+H)</property>
+                <accelerator key="h" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -759,7 +763,8 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Copy generated password to clipboard</property>
+                <property name="tooltip-text" translatable="yes">Copy generated password to clipboard (Press Ctrl+C)</property>
+                <accelerator key="c" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -773,7 +778,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Quit(Press Ctrl+Q)</property>
+                <property name="tooltip-text" translatable="yes">Quit(Press Ctrl+Q/Ctrl+W)</property>
               </object>
               <packing>
                 <property name="expand">True</property>
