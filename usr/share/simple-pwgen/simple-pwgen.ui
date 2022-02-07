@@ -445,6 +445,11 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="caps-lock-warning">False</property>
                 <property name="placeholder-text" translatable="yes">Generated Password Shown Here</property>
                 <property name="input-purpose">password</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="passwordfield-atkobject">
+                    <property name="AtkObject::accessible-role" translatable="yes">password-text</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -458,15 +463,56 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLevelBar" id="strength_bar">
+                  <object class="GtkBox" id="strenght_bar_box">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="margin-top">5</property>
-                    <property name="margin-bottom">5</property>
-                    <property name="max-value">10</property>
-                    <property name="mode">discrete</property>
+                    <property name="margin-top">10</property>
+                    <property name="margin-bottom">10</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <object class="GtkLevelBar" id="strength_bar">
+                        <property name="name">strength_bar</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">5</property>
+                        <property name="margin-end">5</property>
+                        <property name="margin-top">5</property>
+                        <property name="margin-bottom">5</property>
+                        <property name="hexpand">True</property>
+                        <property name="max-value">10</property>
+                        <property name="mode">discrete</property>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="strength_bar-atkobject">
+                            <property name="AtkObject::accessible-role" translatable="yes">level-bar</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="pw_strength_field">
+                        <property name="name">pw_strength_field</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="halign">start</property>
+                        <property name="margin-start">5</property>
+                        <property name="margin-end">5</property>
+                        <property name="margin-top">5</property>
+                        <property name="margin-bottom">5</property>
+                        <property name="editable">False</property>
+                        <property name="has-frame">False</property>
+                        <property name="caps-lock-warning">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -475,21 +521,23 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                   </packing>
                 </child>
                 <child>
-                  <!-- n-columns=2 n-rows=3 -->
-                  <object class="GtkGrid">
+                  <!-- n-columns=4 n-rows=2 -->
+                  <object class="GtkGrid" id="pw_info_box">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="margin-top">5</property>
-                    <property name="margin-bottom">5</property>
+                    <property name="margin-top">10</property>
+                    <property name="margin-bottom">10</property>
+                    <property name="row-spacing">10</property>
                     <property name="column-spacing">10</property>
                     <property name="row-homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Strength:</property>
+                        <property name="tooltip-text" translatable="yes">Password score out of 100</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Score(Out of 100):</property>
+                        <property name="selectable">True</property>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
@@ -497,15 +545,75 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="pwstrength">
+                      <object class="GtkEntry" id="pw_score_field">
+                        <property name="name">pw_score_field</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
-                        <property name="hexpand">True</property>
                         <property name="editable">False</property>
+                        <property name="has-frame">False</property>
+                        <property name="caps-lock-warning">False</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
                         <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-text" translatable="yes">Number of arbitrary guesses required to crack the password</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Number of Guesses:</property>
+                        <property name="selectable">True</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">2</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="pw_guesses_field">
+                        <property name="name">pw_guesses_field</property>
+                        <property name="width-request">-1</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="editable">False</property>
+                        <property name="has-frame">False</property>
+                        <property name="caps-lock-warning">False</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">3</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-text" translatable="yes">Entropy of generated password</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Entropy:</property>
+                        <property name="selectable">True</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="pw_entropy_field">
+                        <property name="name">pw_entropy_field</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="has-frame">False</property>
+                        <property name="caps-lock-warning">False</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -513,36 +621,81 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="tooltip-text" translatable="yes">Time that will be required by a computer with computing power 450 PetaFLOPS to crack this password.</property>
-                        <property name="label" translatable="yes">TIme To Crack:</property>
+                        <property name="label" translatable="yes">Time required to crack:</property>
+                        <property name="selectable">True</property>
                       </object>
                       <packing>
-                        <property name="left-attach">0</property>
+                        <property name="left-attach">2</property>
                         <property name="top-attach">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="pw_crack_time">
+                      <object class="GtkEntry" id="pw_crack_time_field">
+                        <property name="name">pw_crack_time_field</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="hexpand">True</property>
                         <property name="editable">False</property>
+                        <property name="has-frame">False</property>
+                        <property name="caps-lock-warning">False</property>
                       </object>
                       <packing>
-                        <property name="left-attach">1</property>
+                        <property name="left-attach">3</property>
                         <property name="top-attach">1</property>
                       </packing>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
                     </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="pw_comment_box">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-top">10</property>
+                    <property name="margin-bottom">10</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="label" translatable="yes">Comment:</property>
+                        <property name="selectable">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="pw_comment_field">
+                        <property name="name">pw_comment_field</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="hexpand">True</property>
+                        <property name="editable">False</property>
+                        <property name="has-frame">False</property>
+                        <property name="caps-lock-warning">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
@@ -578,7 +731,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Generate Password.</property>
+                <property name="tooltip-text" translatable="yes">Generate new password</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -592,6 +745,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Show/Hide password</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -605,7 +759,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Copy Generated Password.</property>
+                <property name="tooltip-text" translatable="yes">Copy generated password to clipboard</property>
               </object>
               <packing>
                 <property name="expand">True</property>
