@@ -1,3 +1,25 @@
+simple-pwgen (1.0.7) stable; urgency=medium
+
+  * Update copyright in About dialog
+  * Update UI with strengthbar
+    - Update strengthbar
+    - Add comment box for password strength
+    - Add entries for password score, entropy
+    - Add entries for time and number of guesses to crack
+    - Add entry for detailed comment on password
+  * Update shortcut keys
+    - Update tooltips on buttons
+    - Add new shortcut keys for settings; closes #13
+    - Update shortcut keys method
+  * Show info on password
+    - Show password strengthbar
+    - Calculate password entropy, score etc.
+  * Colorize Strengthbar; closes #10
+    - Use color different colors for bar and comment
+    - Update UI
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 07 Feb 2022 12:13:44 +0530
+
 simple-pwgen (1.0.6) stable; urgency=medium
 
   * Add keyboard shortcuts
