@@ -198,7 +198,7 @@ class SimplepwgenWindow():
 		dlg.set_version("__DEB_VERSION__")
 		dlg.set_comments(_("Very simple Python3-based GUI application to generate secure and random password."))
 		dlg.set_website("https://hsbasu.github.io/simple-pwgen")
-		dlg.set_copyright("Copyright \xa9 2021 Himadri Sekhar Basu")
+		dlg.set_copyright("Copyright \xa9 2022 Himadri Sekhar Basu")
 		dlg.set_authors(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
 		dlg.set_documenters(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
 		try:
