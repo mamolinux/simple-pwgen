@@ -26,11 +26,12 @@
 import configparser
 import gettext
 import locale
+import math
 import os
 import random
-import string
 import threading
 from gi.repository import GObject
+from string import ascii_uppercase, ascii_lowercase, digits, punctuation
 
 
 # Used as a decorator to run things in the background
@@ -62,7 +63,7 @@ CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
 
 
 # This is the backend.
-# It contains utility functions generate
+# It contains utility functions to generate
 # passwords.
 class PasswordGenerator():
     
@@ -78,6 +79,7 @@ class PasswordGenerator():
         
         self.config = configparser.ConfigParser()
         self.save_config()
+        self.pool = ascii_lowercase+ascii_uppercase+digits+punctuation
         
     def load_config(self):
         """Loads configurations from config file.
@@ -189,7 +191,7 @@ class PasswordGenerator():
         
         if self.lowercase == True:
             if self.lowercase_num >0:
-                Lowercaselist = list(string.ascii_lowercase)
+                Lowercaselist = list(ascii_lowercase)
                 excludelist = list(self.excludeLowercase)
                 for i in excludelist:
                     del(Lowercaselist[Lowercaselist.index(i)])
@@ -199,7 +201,7 @@ class PasswordGenerator():
         
         if self.uppercase == True:
             if self.uppercase_num >0:
-                Uppercaselist = list(string.ascii_uppercase)
+                Uppercaselist = list(ascii_uppercase)
                 excludelist = list(self.excludeUppercase)
                 for i in excludelist:
                     del(Uppercaselist[Uppercaselist.index(i)])
@@ -209,7 +211,7 @@ class PasswordGenerator():
         
         if self.digit == True:
             if self.digit_num >0:
-                Digitslist = list(string.digits)
+                Digitslist = list(digits)
                 excludelist = list(self.excludeDigit)
                 for i in excludelist:
                     del(Digitslist[Digitslist.index(i)])
@@ -219,7 +221,7 @@ class PasswordGenerator():
         
         if self.symbol == True:
             if self.symbol_num >0:
-                Symbollist = list(string.punctuation)
+                Symbollist = list(punctuation)
                 excludelist = list(self.excludeSymbol)
                 for i in excludelist:
                     del(Symbollist[Symbollist.index(i)])
@@ -305,32 +307,168 @@ class PasswordGenerator():
         includechars = PasswordGenerator.includeonlyChars(self)
         includecases = PasswordGenerator.includeCases(self, self.pwlength)
         
-        pool = "".join(includechars["Lowercases"] + includechars["Uppercases"] + includechars["Digits"] + includechars["Symbols"])  # don't include symbol
+        self.pool = "".join(includechars["Lowercases"] + includechars["Uppercases"] + includechars["Digits"] + includechars["Symbols"])
         
         password = ''  # empty string for password
         
         for i in range(self.pwlength):
-            if i in includecases["Lowercases"]:  # this is to ensure there is at least one uppercase
+            # this is to ensure there is minimum number of lowercases desired by user
+            if i in includecases["Lowercases"]:
                 password += self.TrueRand.choice(includechars["Lowercases"])
             
-            elif i in includecases["Uppercases"]:   # this is to ensure there is at least one uppercase
+            # this is to ensure there is minimum number of uppercases desired by user
+            elif i in includecases["Uppercases"]:
                 password += self.TrueRand.choice(includechars["Uppercases"])
             
-            elif i in includecases["Digits"]:  # this is to ensure there is at least one uppercase
+            # this is to ensure there is minimum number of digits desired by user
+            elif i in includecases["Digits"]:
                 password += self.TrueRand.choice(includechars["Digits"])
             
-            elif i in includecases["Symbols"]:  # this is to ensure there is at least one symbol
+            # this is to ensure there is minimum number of symbols/characters desired by user
+            elif i in includecases["Symbols"]:
                 password += self.TrueRand.choice(includechars["Symbols"])
             
             else:  # adds a random character from pool
-                password += self.TrueRand.choice(pool)
-                
-        # password=self.TrueRand.choice(password)
-            
+                password += self.TrueRand.choice(self.pool)
+        
+        # shuffle the password again
+        password = list(password)
+        random.shuffle(password)
+        password = ''.join(password)
+        
         return password  # returns the password string
     
+    def check_pwstrength(self, passwd):
+        score = 0
+        comment = _("Bad Password.")
+        if len(passwd) <6:
+            comment += _(" Password is too short!")
+            score += 0
+        elif len(passwd) <8:
+            score += 20
+        elif len(passwd) <10:
+            score += 40
+        else:
+            score += 60
+        
+        if any(c in ascii_lowercase for c in passwd):
+            # check for lower case in password
+            score += 10
+            if passwd == passwd.lower():
+                # check if password is only lower case
+                comment += _(" Only lower case used.")
+                score -= 5
+        else:
+            comment += _(" No lower case used.")
+        
+        if any(c in ascii_uppercase for c in passwd):
+            # check for upper case in password
+            score += 10
+            if passwd == passwd.upper():
+                # check if password is only upper case
+                comment += _(" Only UPPER case used.")
+                score -= 5
+        else:
+            comment += _(" No UPPER case used.")
+        
+        if any(c in punctuation for c in passwd):
+            score += 10
+        else:
+            comment += _(" No special character used.")
+        
+        if any(c in digits for c in passwd):
+            # check for digits in password
+            score += 10
+            if passwd.isdigit():
+                # check if password is only digit
+                comment += _(" Only digits used. Is It a PIN?")
+                score -= 5
+        else:
+            comment += _(" No digit used.")
+        
+        if (score >90):
+            comment = _("Looks like you know how to generate a Good Password. All types of characters are used.")
+        
+        if score <=10:
+            color = "#ff0000"
+        elif score > 10 and score <=20:
+            color = "#ff6a00"
+        elif score > 20 and score <=30:
+            color = "#ffd500"
+        elif score > 30 and score <=40:
+            color = "#bfff00"
+        elif score > 40 and score <=50:
+            color = "#55ff00"
+        elif score > 50 and score <=60:
+            color = "#00ff15"
+        elif score > 60 and score <=70:
+            color = "#00ff80"
+        elif score > 70 and score <=80:
+            color = "#00ffea"
+        elif score > 80 and score <=90:
+            color = "#00aaff"
+        elif score > 90 and score <=100:
+            color = "#0040ff"
+        
+        return [score, comment, color]
+        
+    def check_pwentrpy(self, passwd):
+        strength_comment = ["Very Weak", "Weak", "Reasonable", "Fairly Strong", "Strong", "Very Strong", "Super Strong"]
+        length = len(passwd)
+        pool_size = len(self.pool)
+        entropy = length*math.log2(pool_size)
+        strength = strength_comment[0]
+        
+        if entropy < 28:
+            # Might keep out family members
+            strength = strength_comment[0]
+        elif (entropy >= 28 and entropy < 36):
+            # Should keep out most people, often good for desktop login passwords
+            strength = strength_comment[1]
+        elif (entropy >= 36 and entropy < 64):
+            # Fairly secure passwords for network and company passwords
+            strength = strength_comment[2]
+        elif (entropy >= 64 and entropy < 80):
+            # Suitable for guarding financial information
+            strength = strength_comment[3]
+        elif (entropy >= 80 and entropy < 100):
+            # Suitable for guarding financial information
+            strength = strength_comment[4]
+        elif (entropy >= 100 and entropy < 128):
+            # Suitable for guarding financial information
+            strength = strength_comment[5]
+        elif entropy >= 128:
+            # Suitable for guarding financial information
+            strength = strength_comment[6]
+        
+        num_guess = round(pow(2, (entropy-1)))
+        timerq_sc = num_guess/1e15   # Time taken by a modern supecomputer to guess the password with 50% probability
+        if (num_guess > 1e8):
+            # in case number of guess is greater than 1e8, use scientific notation
+            num_guess = "{:e}".format(num_guess)
+        
+        minute, secnd = divmod(timerq_sc, 60)
+        hour, minute = divmod(minute, 60)
+        day, hour = divmod(hour, 24)
+        month, day = divmod(day, 30)
+        year, month = divmod(month, 12)
+        timerq = _("%s years %s months %s days %s hours %s minutes %s seconds") % (year, month, day, hour, minute, secnd)
+        
+        return [strength, entropy, num_guess, timerq]
+
 if __name__ == "__main__":
     generator = PasswordGenerator()
-    passw = generator.GeneratePW()
-    print(passw)
+    passwd = generator.GeneratePW()
+    [pw_score, pw_comment, color] = generator.check_pwstrength(passwd)
+    [pw_strength, pw_entropy, num_guess_crack, timerq_crack] = generator.check_pwentrpy(passwd)
+    
+    print("Generated Password: "+str(passwd))
+    print("")
+    print("Strength: "+str(pw_strength))
+    print("Score: "+str(pw_score))
+    print("Entropy: "+str(pw_entropy))
+    print("Number of Guesses: "+str(num_guess_crack))
+    print("Time required to crack: "+str(timerq_crack))
+    print("Comment: "+str(pw_comment))
+    print("")
     
