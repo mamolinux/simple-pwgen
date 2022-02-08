@@ -22,4 +22,4 @@
 # Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 
-/usr/lib/simple-pwgen/simple-pwgen.py &
+/usr/bin/python3 /usr/lib/simple-pwgen/simple-pwgen.py
