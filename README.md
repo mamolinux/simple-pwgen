@@ -50,9 +50,11 @@ The main purpose of this application is to generate random and stong passwords. 
 2. Minimum number of each cases to be included in a password.
 3. Whether to exclude some characters for each cases individually while generating a password.
 4. By default, the generated password is hidden with `*` characters in the generated field to avoid shoulder-surfers. The user has the choice to view it using `Show/Hide` button.
+5. Show password strength and comments on generated password to help users create strong passwords.
 
 <p align="center">
-	<img src="https://github.com/hsbasu/simple-pwgen/raw/gh-pages/screenshots/generation-window.png" alt="Main Window (Dark)">
+	<img src="https://github.com/hsbasu/simple-pwgen/raw/gh-pages/screenshots/main-window-light.png" alt="Main Window (Light)">
+	<img src="https://github.com/hsbasu/simple-pwgen/raw/gh-pages/screenshots/main-window-dark.png" alt="Main Window (Dark)">
 </p>
 
 **N.B.: This application does not save the generated password. So make sure you save it somewhere safe like using Firefox Lockwise.**
