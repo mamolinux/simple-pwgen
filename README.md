@@ -45,7 +45,7 @@ Very simple Python3-based GUI application to generate secure and random password
 
 ## Features and Screenshots
 
-The main purpose of this application is to generate random and stong passwords. It lets an user choose:
+The main purpose of this application is to generate random and strong passwords. It lets an user choose:
 1. Whether to include lowercase, uppercase, digit or punctuation individually or all of them.
 2. Minimum number of each cases to be included in a password.
 3. Whether to exclude some characters for each cases individually while generating a password.
