@@ -1,4 +1,4 @@
-# [Simple Password Generator](https://github.com/hsbasu/simple-pwgen)
+# [Simple Password Generator](https://hsbasu.github.io/simple-pwgen)
 
 <p align="center">
   	<img src="https://raw.githubusercontent.com/hsbasu/simple-pwgen/master/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg?sanitize=true" height="128" alt="Logo">
