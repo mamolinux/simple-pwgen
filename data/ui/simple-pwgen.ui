@@ -34,7 +34,6 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
   </object>
   <object class="GtkWindow" id="MainWindow">
     <property name="can-focus">False</property>
-    <property name="border-width">12</property>
     <property name="window-position">center</property>
     <property name="default-width">800</property>
     <property name="default-height">600</property>
@@ -43,6 +42,10 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
+        <property name="margin-top">5</property>
+        <property name="margin-bottom">5</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkBox" id="input">
