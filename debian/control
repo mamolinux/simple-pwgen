@@ -1,17 +1,39 @@
 Source: simple-pwgen
-Section: admin
+Section: utils
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 13), dh-python, python3-setuptools, python3-all
+Standards-Version: 4.6.0
+Homepage: https://hsbasu.github.io/simple-pwgen
+#Vcs-Browser: https://salsa.debian.org/debian/simple-pwgen
+#Vcs-Git: https://salsa.debian.org/debian/simple-pwgen.git
+#Testsuite: autopkgtest-pkg-python
+Rules-Requires-Root: no
 
 Package: simple-pwgen
 Architecture: all
-Depends: python3,
-         python3-gi,
-         python3-configobj,
-         python3-setproctitle,
-         ${misc:Depends},
+Depends: python3-simple-pwgen,
+          ${python3:Depends},
+          ${misc:Depends}
+Suggests: python-simple-pwgen-doc
 Description: Simple Password Generator
  Very simple Python3-based GUI application
- to generate random password.
+ to generate secure and random password.
+ .
+ This package installs the gui library for Python 3.
+
+Package: python3-simple-pwgen
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Suggests: python-simple-pwgen-doc
+Description: Simple Password Generator backend
+ CLI interface for very simple Python3-based GUI application
+ to generate secure and random password.
+ .
+ This package installs the commandline library for Python 3.
+
+# Package: simple-pwgen-doc
+# Architecture: all
+# Description: documentation for simple-pwgen
+#  Documentations for CLI and GUI environment for
+#  Simple Password Generator.
