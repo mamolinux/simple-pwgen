@@ -1,12 +1,12 @@
 [Desktop Entry]
 Name=Simple Password Generator
 Comment=Very simple Python3-based GUI application to generate random password.
-GenericName=Simple Password Generator
 Exec=simple-pwgen
 Icon=simple-pwgen
 Terminal=false
 Type=Application
 Encoding=UTF-8
 Categories=Application;Utility;
-X-KDE-StartupNotify=false
-OnlyShowIn=KDE;
+StartupNotify=false
+NotShowIn=KDE;
+Name[en]=simple-pwgen.desktop

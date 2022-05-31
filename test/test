@@ -1,3 +1,4 @@
 #!/bin/bash
 sudo cp -R usr/* /usr/
 # simple-pwgen
+exit 0

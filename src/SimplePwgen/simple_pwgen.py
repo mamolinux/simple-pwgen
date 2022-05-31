@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 # Copyright (C) 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of simple-pwgen.
@@ -35,7 +33,8 @@ warnings.filterwarnings("ignore")
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk
 
-from common import CONFIG_FILE, PasswordGenerator
+from SimplePwgen import __version__
+from SimplePwgen.common import CONFIG_FILE, PasswordGenerator
 
 setproctitle.setproctitle("simple-pwgen")
 
@@ -221,7 +220,7 @@ class SimplepwgenWindow():
 		dlg.set_title(_("About"))
 		
 		dlg.set_program_name(_("Simple Password Generator"))
-		dlg.set_version("__DEB_VERSION__")
+		dlg.set_version(__version__[0])
 		dlg.set_comments(_("Very simple Python3-based GUI application to generate secure and random password."))
 		dlg.set_website("https://hsbasu.github.io/simple-pwgen")
 		dlg.set_copyright("Copyright \xa9 2022 Himadri Sekhar Basu")
@@ -365,8 +364,25 @@ class SimplepwgenWindow():
 		self.pw_crack_time_field.set_text(str(timerq_crack))
 		self.pw_comment_field.set_text(pw_comment)
 		
-
-if __name__ == "__main__":
+def gui():
 	application = simple_pwgen("org.x.simple-pwgen", Gio.ApplicationFlags.FLAGS_NONE)
 	application.run()
 	
+def console():
+    generator = PasswordGenerator()
+    passwd = generator.GeneratePW()
+    [pw_score, pw_comment, color] = generator.check_pwstrength(passwd)
+    [pw_strength, pw_entropy, num_guess_crack, timerq_crack] = generator.check_pwentrpy(passwd)
+    
+    print("Generated Password: "+str(passwd))
+    print("")
+    print("Strength: "+str(pw_strength))
+    print("Score: "+str(pw_score))
+    print("Entropy: "+str(pw_entropy))
+    print("Number of Guesses: "+str(num_guess_crack))
+    print("Time required to crack: "+str(timerq_crack))
+    print("Comment: "+str(pw_comment))
+    print("")
+
+if __name__ == "__main__":
+	gui()
