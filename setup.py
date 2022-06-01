@@ -13,6 +13,8 @@ else:
     raise RuntimeError('No version found in debian/changelog')
 
 with open("src/SimplePwgen/VERSION", "w") as f:
+    if '~' in version:
+        version = version.split('~')[0]
     f.write("%s" % version)
 
 setup(data_files=[('share/simple-pwgen', glob.glob("data/ui/*")),
