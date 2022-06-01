@@ -1,4 +1,3 @@
 #!/bin/bash
-sudo cp -R usr/* /usr/
-# simple-pwgen
-exit 0
+pip3 install .
+simple-pwgen-cli
