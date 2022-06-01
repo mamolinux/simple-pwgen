@@ -7,7 +7,7 @@ export PYBUILD_NAME=simple-pwgen
 export PYBUILD_INSTALL_ARGS_python3=--install-scripts=usr/bin
 
 %:
-	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+	dh $@ --with python3 --buildsystem=pybuild
 
 
 override_dh_auto_clean:
@@ -24,8 +24,12 @@ override_dh_auto_build:
 	dh_auto_build
 #	PYTHONPATH=. python3 -m sphinx -N -bhtml \
 #	docs/ usr/share/html # HTML generator
-	PYTHONPATH=. python3 -m sphinx -N -bman \
-	docs/ usr/share/man/man1 # Manpage generator
+#	PYTHONPATH=. python3 -m sphinx -N -bman \
+#	docs/ usr/share/man/man1 # Manpage generator
+
+override_dh_install:
+	dh_install
+	install -D -m 0644 debian/simple-pwgen-cli.1 debian/python3-simple-pwgen/usr/share/man/man1/simple-pwgen-cli.1
 
 override_dh_auto_install:
 	dh_auto_install --destdir=$(CURDIR)/$(DEB_SOURCE)
