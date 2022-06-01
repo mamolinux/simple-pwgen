@@ -1,3 +1,38 @@
+simple-pwgen (1.0.8) stable; urgency=medium
+
+  * New icon for simple-pwgen
+  * fix error "Permission denied"; fixes #25
+  * update readme to release 1.0.7 (#26)
+  * Update debian standards version
+  * Update readme with new features
+    - Add password strength and comments to features
+    - Add new screenshots
+  * fix typo in README
+  * add new and update old workflows
+    - Update workflows to run on all branches
+    - add new workflow to publish deb package from latest release
+    - Fix typo in README
+    - Update test script
+  * pythonize simple-pwgen (#27)
+    - use pure python packaging methods
+    - use debian revision number in d/changelog
+    - update .gitignore
+    - update desktop files
+    - Add separate VERSION file to source
+  * re-debianize to match python packaging (#28)
+    - Create python-simple-pwgen package as commadline backend
+    - Modify simple-pwgen to provide GUI of app
+    - Create sphinx based documentation
+  * Update CI workflow (#30)
+  * fix launchpad build failures (#29)
+    - d/control: reduce compat level and update depends
+    - d/python3-simple-pwgen.install: remove installation of manual
+    - d/rules: remove sphinx and update rules
+  * fix CI workflow (#31)
+  * fix versioning to comply with PEP 440 versioning (#32)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Wed, 01 Jun 2022 22:42:26 +0530
+
 simple-pwgen (1.0.7) stable; urgency=medium
 
   * Update copyright in About dialog
