@@ -49,7 +49,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.gettag.outputs.latesttag }}
-          # name: "version: "${{ steps.gettag.outputs.latesttag }}
           generate_release_notes: true
           draft: false
           prerelease: false
