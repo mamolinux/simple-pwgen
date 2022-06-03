@@ -3,6 +3,7 @@
 *.egg-info
 
 # python build files
+src/SimplePwgen/VERSION
 build/*
 dist/*
 

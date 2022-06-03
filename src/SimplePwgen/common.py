@@ -55,9 +55,14 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+# get version
+version_file = os.path.abspath(os.path.dirname(__file__))+'/VERSION'
+__version__ = open(version_file, 'r').readlines()[0]
+
 # Constants
 CONFIG_DIR = os.path.expanduser('~/.config/simple-pwgen/')
 CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
+UI_PATH = "/usr/share/"+APP+"/ui/"
 
 
 # This is the backend.
