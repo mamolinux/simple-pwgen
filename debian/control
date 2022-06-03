@@ -16,7 +16,9 @@ Rules-Requires-Root: no
 
 Package: simple-pwgen
 Architecture: all
-Depends: python3-gi,
+Depends: gobject-introspection,
+         gir1.2-gtk-3.0,
+         python3-gi,
          python3-simple-pwgen,
          ${python3:Depends},
          ${misc:Depends}
@@ -30,7 +32,6 @@ Description: Simple Password Generator
 Package: python3-simple-pwgen
 Architecture: all
 Depends: python3-configobj,
-         python3-gi,
          python3-setproctitle,
          python3-tldextract,
          ${python3:Depends},
