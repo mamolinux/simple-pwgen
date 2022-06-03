@@ -1,7 +1,7 @@
 # [Simple Password Generator](https://hsbasu.github.io/simple-pwgen)
 
 <p align="center">
-  	<img src="https://raw.githubusercontent.com/hsbasu/simple-pwgen/master/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg?sanitize=true" height="128" alt="Logo">
+  	<img src="https://raw.githubusercontent.com/hsbasu/simple-pwgen/master/data/icons/simple-pwgen.svg?sanitize=true" height="128" alt="Logo">
 </p>
 
 <p align="center">
@@ -29,8 +29,8 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.7/simple-pwgen_1.0.7_all.deb">
-		<img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.7/simple-pwgen_1.0.7_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.8/simple-pwgen_1.0.8_all.deb">
+		<img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.8/simple-pwgen_1.0.8_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
 	</a>
 </p>
 
@@ -40,7 +40,8 @@ Very simple Python3-based GUI application to generate secure and random password
 <p align="center">
 	<a href="https://github.com/hsbasu/simple-pwgen/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/hsbasu/simple-pwgen/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.7/simple-pwgen_1.0.7_all.deb">Download Binary (.deb)</a>
+	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.8/python3-simple-pwgen_1.0.8_all.deb">Download Binary (Dependency for GUI) (.deb)</a></br>
+	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.8/simple-pwgen_1.0.8_all.deb">Download Binary for GUI (.deb)</a>
 </p>
 
 ## Features and Screenshots
