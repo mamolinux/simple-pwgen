@@ -82,7 +82,7 @@
           # [Simple Password Generator](https://github.com/hsbasu/simple-pwgen)
           
           <p class="badges">
-            <img src="https://raw.githubusercontent.com/hsbasu/simple-pwgen/master/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg?sanitize=true" height="128" alt="Logo"></br>
+            <img src="https://raw.githubusercontent.com/hsbasu/simple-pwgen/master/data/icons/simple-pwgen.svg?sanitize=true" height="128" alt="Logo"></br>
             
             <a class="badges" href="https://github.com/hsbasu/simple-pwgen/actions/workflows/ci.yml">
               <img src="https://img.shields.io/github/workflow/status/hsbasu/simple-pwgen/CI/master?label=CI%20Build" alt="CI build">
@@ -108,18 +108,21 @@
             <a class="badges" href="#download-latest-version">
               <img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads" alt="Downloads">
             </a>
-            <a class="badges" href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.7/simple-pwgen_1.0.7_all.deb">
-              <img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.7/simple-pwgen_1.0.7_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+            <a class="badges" href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.8/simple-pwgen_1.0.8_all.deb">
+              <img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.8/simple-pwgen_1.0.8_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
             </a>
           </p>
           
-          Very simple Python3-based GUI application to generate random password.
+          Very simple Python3-based GUI application to generate secure and random password.
           
           ## Download Latest Version
+          If you want to generate passwords from terminal, download and install the CLI Backend. To use the graphical interface download both the backend and frontend. For installation, check 
           <p class="badges">
             <a class="buttn" href="https://github.com/hsbasu/simple-pwgen" target="_blank"><i class="fa fa-github"></i> View On GitHub</a>
             <a class="buttn" href="https://github.com/hsbasu/simple-pwgen/zipball/master"><i class="fa fa-file-zip-o"></i> Download Source (.zip)</a>
-            <a class="buttn" href="https://github.com/hsbasu/simple-pwgen/tarball/master"><i class="fa fa-file-zip-o"></i> Download Source (.tar.gz)</a><a class="buttn" href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.7/simple-pwgen_1.0.7_all.deb"><i class="fa fa-file-zip-o"></i> Download Binary (.deb)</a>
+            <a class="buttn" href="https://github.com/hsbasu/simple-pwgen/tarball/master"><i class="fa fa-file-zip-o"></i> Download Source (.tar.gz)</a>
+            <a class="buttn" href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.8/python3-simple-pwgen_1.0.8_all.deb"><i class="fa fa-file-zip-o"></i> Download Binary [CLI Backend] (.deb)</a>
+            <a class="buttn" href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.8/simple-pwgen_1.0.8_all.deb"><i class="fa fa-file-zip-o"></i> Download Binary [GUI Frontend] (.deb)</a>
           </p>
 
           ## Features and Screenshots
@@ -142,10 +145,12 @@
           - [Dependencies](#dependencies)
             - [Debian/Ubuntu based systems](#debianubuntu-based-distro)
             - [Other Linux-based systems](#other-linux-based-distro)
-          - [Installation](#build-and-install-the-latest-version)
-            - [Debian/Ubuntu based systems](#debianubuntu-based-systems)
-            - [Other Linux-based systems](#other-linux-based-systems)
-            - [For Developers](#for-developers)
+          - [Installation](#installation)
+            - [1. Download and install binary files](#1-download-and-install-binary-files)
+            - [2. Build from source](#2-build-from-source)
+              - [Debian/Ubuntu based systems](#debianubuntu-based-systems)
+              - [Other Linux-based systems](#other-linux-based-systems)
+              - [For Developers](#for-developers)
           - [User Manual](#user-manual)
           - [Issue Tracking and Contributing](#issue-tracking-and-contributing)
           - [Contributors](#contributors)
@@ -159,6 +164,10 @@
           python3-setproctitle
           python3-tldextract
           ```
+          To use or test Simple Password Generator, you need these dependencies to be installed.
+          
+          **Note**: If you are using `gdebi` to install **Simple Password Generator** from a `.deb` file, it will automatically install the dependencies and you can skip this step.
+          
           ### Debian/Ubuntu based distro
           To install dependencies on Debian/Ubuntu based systems, run:
           ```
@@ -171,9 +180,21 @@
           
           **Note**: There might be cases where one or more dependencies might not be available for your system. But that is highly unlikely. In such situations, please [create an issue](#issue-tracking-and-contributing).
           
-          ## Build and Install the Latest Version
-          ### Debian/Ubuntu based systems
-          There are two methods, this app can be installed/used on a Debian/Ubuntu based system. First, download and unzip the source package using:
+          ## Installation
+          There are two ways, this app can be installed on a Debian/Ubuntu based system.
+          
+          ### 1. Download and install binary files
+          Download the latest binary .deb files from [here](https://github.com/hsbasu/simple-pwgen/releases/latest).
+          First install the CLI Backend. Then install the GUI Frontend as
+          ```
+          sudo dpkg -i python3-simple-pwgen*.deb
+          sudo dpkg -i simple-pwgen*.deb
+          ```
+          
+          ### Build and Install From Source
+          If you are having trouble installing the pre-built binary , build them from source.
+          #### Debian/Ubuntu based systems
+           First, download and unzip the source package by running the following commands from terminal:
           ```
           wget https://github.com/hsbasu/simple-pwgen/archive/refs/heads/master.zip
           unzip master.zip
@@ -181,31 +202,32 @@
           ```
           
           1. **Option 1:** Manually copying necessary files to root (`/`). For that, follow the steps below:
-            1. [**Optional**] To make translations/locales in languages other than **English**, run:
+            1. [**Optional**] [**In Progress**] To make translations/locales in languages other than **English**, run:
               ```
               make
               ```
-              from the `/path/to/repo` in a terminal. It will create the translations/locales in `usr/share/locale`.
+              from the `simple-pwgen-master` in a terminal. It will create the translations/locales in `usr/share/locale`.
             
-            2. Copy the contents of `usr/` to `/usr/`:
+            2. Install python package using `pip3`:
               ```
-              sudo cp -R usr /
+              sudo pip3 install .
               ```
+              It will install all files under `/usr/local/`
             3. Compile `schemas` using:
               ```
-              sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+              sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
               ```
           
           2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
-            1. from the `/path/to/repo` run:
+            1. from the `simple-pwgen-master` run:
               ```
               dpkg-buildpackage --no-sign
               ```
             
-            This will create a `simple-pwgen_*.deb` package at `../path/to/repo`.
+            This will create a `simple-pwgen_*.deb` package at `../simple-pwgen-master`.
             2. Install the debian package using
               ```
-              sudo dpkg -i *.deb
+              sudo dpkg -i ../*.deb
               sudo apt install -f
               ```
           After it is installed, run `simple-pwgen` from terminal or use the `simple-pwgen.desktop`.
