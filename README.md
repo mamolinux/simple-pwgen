@@ -37,6 +37,7 @@
 Very simple Python3-based GUI application to generate secure and random password.
 
 ## Download Latest Version
+If you want to generate passwords from terminal, download and install the CLI Backend. To use the graphical interface download both the backend and frontend. For installation, check [here](#)
 <p align="center">
 	<a href="https://github.com/hsbasu/simple-pwgen/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/hsbasu/simple-pwgen/tarball/master">Download Source (.tar.gz)</a></br>
@@ -66,10 +67,12 @@ The main purpose of this application is to generate random and strong passwords.
 - [Dependencies](#dependencies)
 	- [Debian/Ubuntu based systems](#debianubuntu-based-distro)
 	- [Other Linux-based systems](#other-linux-based-distro)
-- [Installation](#build-and-install-the-latest-version)
-	- [Debian/Ubuntu based systems](#debianubuntu-based-systems)
-	- [Other Linux-based systems](#other-linux-based-systems)
-	- [For Developers](#for-developers)
+- [Installation](#installation)
+	- [1. Download and install binary files](#1-download-and-install-binary-files)
+	- [2. Build and Install from source](#2-build-and-install-from-source)
+		- [Debian/Ubuntu based systems](#debianubuntu-based-systems)
+		- [Other Linux-based systems](#other-linux-based-systems)
+		- [For Developers](#for-developers)
 - [User Manual](#user-manual)
 - [Issue Tracking and Contributing](#issue-tracking-and-contributing)
 - [Contributors](#contributors)
@@ -85,6 +88,8 @@ python3-tldextract
 ```
 To use or test Simple Password Generator, you need these dependencies to be installed.
 
+**Note**: If you are using `gdebi` to install **Simple Password Generator** from a `.deb` file, it will automatically install the dependencies and you can skip this step.
+
 ### Debian/Ubuntu based distro
 To install dependencies on Debian/Ubuntu based systems, run:
 ```
@@ -98,8 +103,20 @@ Remove `apt install` in the command given in [Debian/Ubuntu based distros](#debi
 
 **Note**: There might be cases where one or more dependencies might not be available for your system. But that is highly unlikely. In such situations, please [create an issue](#issue-tracking-and-contributing).
 
-## Build and Install the Latest Version
-### Debian/Ubuntu based systems
+## Installation
+There are two ways, this app can be installed on a Debian/Ubuntu based system.
+
+### 1. Download and install binary files
+Download the latest binary .deb files from [here](https://github.com/hsbasu/simple-pwgen/releases/latest).
+First install the CLI Backend. Then install the GUI Frontend as
+```
+sudo dpkg -i python3-simple-pwgen*.deb
+sudo dpkg -i simple-pwgen*.deb
+```
+
+### 2. Build and Install From Source
+If you are having trouble installing the pre-built binary , build them from source.
+#### Debian/Ubuntu based systems
 There are two methods, this app can be installed/used on a Debian/Ubuntu based system. First, download and unzip the source package using:
 ```
 wget https://github.com/hsbasu/simple-pwgen/archive/refs/heads/master.zip
@@ -114,13 +131,14 @@ cd simple-pwgen-master
 		```
 		from the `simple-pwgen-master` in a terminal. It will create the translations/locales in `usr/share/locale`.
 	
-	2. Copy the contents of `usr/` to `/usr/`:
+	2. Install python package using `pip3`:
 		```
-		sudo cp -R usr /
+		sudo pip3 install .
 		```
+		It will install all files under `/usr/local/`
 	3. Compile `schemas` using:
 		```
-		sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+		sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
 		```
 
 2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
@@ -128,16 +146,16 @@ cd simple-pwgen-master
 		```
 		dpkg-buildpackage --no-sign
 		```
-		This will create a `simple-pwgen_*.deb` package at `../simple-pwgen-master`.
+		This will create a `simple-pwgen_*.deb` and `python3-simple-pwgen_*.deb` package at `../simple-pwgen-master`.
 	
 	2. Install the debian package using
 		```
-		sudo dpkg -i ../simple-pwgen_*.deb
+		sudo dpkg -i ../*simple-pwgen_*.deb
 		sudo apt install -f
 		```
 After it is installed, run `simple-pwgen` from terminal or use the `simple-pwgen.desktop`.
 
-### Other Linux-based systems
+#### Other Linux-based systems
 1. Install the [dependencies](#other-linux-based-distro).
 2. From instructions for [Debian/Ubuntu based systems](#debianubuntu-based-systems), follow **Option 1**.
 
