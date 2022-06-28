@@ -23,7 +23,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
         with:
           fetch-depth: 0
       
@@ -31,9 +31,8 @@ jobs:
       - name: install-deps
         run: |
           sudo apt-get update -qq
-          sudo apt install -y build-essential debhelper devscripts dh-python\
-          python3 python3-all python3-configobj python3-gi python3-setproctitle\
-          python3-tldextract python3-sphinx
+          sudo apt install -y build-essential debhelper devscripts \
+          dh-python python3-all python3-setuptools python3-sphinx
       
       - name: build-deb
         run: |
