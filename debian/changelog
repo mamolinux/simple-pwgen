@@ -1,3 +1,30 @@
+simple-pwgen (1.0.9) stable; urgency=medium
+
+  * fix auto build and publish deb packaging workflow (#33)
+  * Modify sources to accomodate cli interface (#34)
+    - setup.cfg: update console and gui scripts
+    - remove VERSION from source
+    - update test file
+    - src/init: remove all codes
+    - src/common: append version and UI path
+    - src/gui: append from common and remove cli function
+    - src: create main function script
+  * Update debian packaging and workflow (#35)
+    - workflow: clean up unused code
+    - remove dh_make example files
+    - d/control: update runtime depends
+    - d/python3-sp.install: rename cli script
+    - d/README: update
+    - rename salsa-ci
+  * Update readme from version 1.0.7 to 1.0.8 (#36)
+    - fix logo
+    - Add dependency
+    - Update assets link
+  * Update installation instructions (#37)
+  * Add workflow to update mamolinux/stable branch
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Tue, 28 Jun 2022 21:47:28 +0530
+
 simple-pwgen (1.0.8) stable; urgency=medium
 
   * New icon for simple-pwgen
