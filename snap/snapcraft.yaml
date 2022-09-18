@@ -1,0 +1,78 @@
+name: simple-pwgen
+summary: Simple Password Generator
+description: |
+  Very simple Python3-based GUI application
+  to generate random password.
+version: git
+contact: https://github.com/hsbasu
+
+grade: devel
+confinement: devmode
+
+base: core20
+architectures:
+  - build-on: [amd64]
+
+apps:
+  simple-pwgen:
+    command: usr/bin/simple-pwgen
+    environment:
+      PYTHONPATH: $SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
+    desktop: usr/share/applications/simple-pwgen.desktop
+    extensions: [gnome-3-38]
+    plugs:
+      - desktop
+      - desktop-legacy
+      - home
+      - unity7
+      - wayland
+      - x11
+  simple-pwgen-gui:
+    command: usr/bin/simple-pwgen-gui
+    environment:
+      PYTHONPATH: $SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
+    plugs:
+      - desktop
+      - desktop-legacy
+      - home
+      - unity7
+      - wayland
+      - x11
+
+parts:
+  simple-pwgen:
+    source: . #https://github.com/hsbasu/simple-pwgen.git
+    plugin: python
+    build-environment:
+      - SNAPCRAFT_PYTHON_VENV_ARGS: --system-site-packages
+      - PATH: $SNAPCRAFT_PART_INSTALL/bin:$PATH
+      # By default, pip installs everything into '/',
+      # so '/lib/python3.*/site-packages' should be
+      # added to PYTHONPATH
+      - PYTHONPATH: '$SNAPCRAFT_PART_INSTALL/lib/python3.8/site-packages:$SNAPCRAFT_PART_INSTALL/usr/lib/python3/dist-packages'
+    build-packages:
+      - libglib2.0-bin  # to generate compiled gschema
+    stage-packages:
+      - gobject-introspection
+      - gir1.2-gtk-3.0
+      - python3
+      - python3-configobj
+      - python3-gi
+      - python3-setproctitle
+    
+    override-build: |
+      snapcraftctl build
+      # By default, pip will install everything
+      # under '/', e.g. into '/bin', '/share'
+      # Move everything to from '/' to '/usr'
+      mv $SNAPCRAFT_PART_INSTALL/bin/simple-pwgen* $SNAPCRAFT_PART_INSTALL/usr/bin
+      cp -a $SNAPCRAFT_PART_INSTALL/share/{applications,glib-2.0,icons} $SNAPCRAFT_PART_INSTALL/usr/share
+      rm -r $SNAPCRAFT_PART_INSTALL/share/{applications,glib-2.0,icons}
+    
+    override-prime: |
+      set -eu
+      snapcraftctl prime
+      # Fix-up application icon lookup
+      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg|' usr/share/applications/simple-pwgen.desktop
+      # Recompile all gschemas
+      glib-compile-schemas ${SNAPCRAFT_PRIME}/usr/share/glib-2.0/schemas/
