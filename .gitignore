@@ -13,3 +13,6 @@ usr/*
 debian/python3-simple-pwgen/*
 debian/simple-pwgen/*
 debian/*debhelper*
+
+# snap files
+*.snap
