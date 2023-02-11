@@ -62,7 +62,7 @@ __version__ = open(version_file, 'r').readlines()[0]
 # Constants
 CONFIG_DIR = os.path.expanduser('~/.config/simple-pwgen/')
 CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
-UI_PATH = "/usr/share/"+APP+"/ui/"
+UI_PATH = os.path.dirname(os.path.realpath(__file__)) + "/ui/"
 
 
 # This is the backend.

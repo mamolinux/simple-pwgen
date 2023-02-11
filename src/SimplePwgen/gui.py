@@ -70,7 +70,7 @@ class SimplepwgenWindow():
 		self.icon_theme = Gtk.IconTheme.get_default()
 		
 		# Set the Glade file
-		gladefile = "/usr/share/simple-pwgen/simple-pwgen.ui"
+		gladefile = UI_PATH + "simple-pwgen.ui"
 		self.builder = Gtk.Builder()
 		self.builder.add_from_file(gladefile)
 		self.window = self.builder.get_object("MainWindow")
@@ -201,7 +201,7 @@ class SimplepwgenWindow():
 			self.excludesymbol_field.set_sensitive(True)
 	
 	def open_keyboard_shortcuts(self, widget):
-		gladefile = "/usr/share/simple-pwgen/shortcuts.ui"
+		gladefile = UI_PATH + "shortcuts.ui"
 		builder = Gtk.Builder()
 		builder.set_translation_domain(APP)
 		builder.add_from_file(gladefile)
@@ -338,7 +338,7 @@ class SimplepwgenWindow():
 	def load_css(self, color: str):
 		css_provider = Gtk.CssProvider()
 		Priority = Gtk.STYLE_PROVIDER_PRIORITY_USER
-		css = open('/usr/share/simple-pwgen/style.css', 'r')
+		css = open(UI_PATH+'style.css', 'r')
 		css_rawdata = css.read() % (color, color)
 		# print(css_rawdata)
 		css_data = bytes(css_rawdata, 'utf-8')
