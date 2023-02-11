@@ -27,21 +27,10 @@ apps:
       - unity7
       - wayland
       - x11
-  simple-pwgen-gui:
-    command: usr/bin/simple-pwgen-gui
-    environment:
-      PYTHONPATH: $SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
-    plugs:
-      - desktop
-      - desktop-legacy
-      - home
-      - unity7
-      - wayland
-      - x11
 
 parts:
   simple-pwgen:
-    source: . #https://github.com/hsbasu/simple-pwgen.git
+    source: https://github.com/hsbasu/simple-pwgen.git
     plugin: python
     build-environment:
       - SNAPCRAFT_PYTHON_VENV_ARGS: --system-site-packages
