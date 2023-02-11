@@ -6,8 +6,8 @@ description: |
 version: git
 contact: https://github.com/hsbasu
 
-grade: devel
-confinement: devmode
+grade: stable
+confinement: strict
 
 base: core20
 architectures:
