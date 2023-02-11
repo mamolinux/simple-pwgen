@@ -28,7 +28,6 @@ import math
 import os
 import random
 import threading
-from gi.repository import GObject
 from string import ascii_uppercase, ascii_lowercase, digits, punctuation
 
 
@@ -39,12 +38,6 @@ def _async(func):
         thread.daemon = True
         thread.start()
         return thread
-    return wrapper
-
-# Used as a decorator to run things in the main loop, from another thread
-def idle(func):
-    def wrapper(*args):
-        GObject.idle_add(func, *args)
     return wrapper
 
 # i18n
@@ -83,7 +76,7 @@ class PasswordGenerator():
         self.config = configparser.ConfigParser()
         self.save_config()
         self.pool = ascii_lowercase+ascii_uppercase+digits+punctuation
-        
+    
     def load_config(self):
         """Loads configurations from config file.
         
@@ -122,12 +115,12 @@ class PasswordGenerator():
             self.symbol = int(self.config["default"]['symbol'])
             self.symbol_num = int(self.config["default"]['symbol_num'])
             self.excludeSymbol = self.config["default"]['excludeSymbol']
-            
+        
         self.check_config()
     
     def save_config(self):
         """Saves configurations to config file.
-
+        
         Saves user-defined configurations to config file.
         If the config file does not exist, it creates a new config file
         (~/.config/simple-pwgen/config.cfg)
@@ -153,7 +146,7 @@ class PasswordGenerator():
             }
             with open(CONFIG_FILE, 'w') as f:
                 self.config.write(f)
-        
+    
     def check_config(self):
         min_required_length = 0
         if self.lowercase == True:
@@ -161,19 +154,19 @@ class PasswordGenerator():
                 print("Warning: minimum number of lowercases should be greater than 0")
             else:
                 min_required_length += self.lowercase_num
-            
+        
         if self.uppercase == True:
             if self.uppercase_num == 0:
                 print("Warning: minimum number of UPPERcases should be greater than 0")
             else:
                 min_required_length += self.uppercase_num
-            
+        
         if self.digit == True:
             if self.digit_num == 0:
                 print("Warning: minimum number of Digits should be greater than 0")
             else:
                 min_required_length += self.digit_num
-            
+        
         if self.symbol == True:
             if self.symbol_num == 0:
                 print("Warning: minimum number of Symbols should be greater than 0")
@@ -184,7 +177,7 @@ class PasswordGenerator():
             print("Error: Minimum required length exceeded given length!")
             
             return 1
-        
+    
     def includeonlyChars(self):
         Lowercaselist = []
         Uppercaselist = []
@@ -198,7 +191,7 @@ class PasswordGenerator():
                 excludelist = list(self.excludeLowercase)
                 for i in excludelist:
                     del(Lowercaselist[Lowercaselist.index(i)])
-                
+        
         charslist["Lowercases"] = Lowercaselist
         # print(Lowercaselist)
         
@@ -208,7 +201,7 @@ class PasswordGenerator():
                 excludelist = list(self.excludeUppercase)
                 for i in excludelist:
                     del(Uppercaselist[Uppercaselist.index(i)])
-                
+        
         charslist["Uppercases"] = Uppercaselist
         # print(Uppercaselist)
         
@@ -218,7 +211,7 @@ class PasswordGenerator():
                 excludelist = list(self.excludeDigit)
                 for i in excludelist:
                     del(Digitslist[Digitslist.index(i)])
-                
+        
         charslist["Digits"] = Digitslist
         # print(Digitslist)
         
@@ -228,7 +221,7 @@ class PasswordGenerator():
                 excludelist = list(self.excludeSymbol)
                 for i in excludelist:
                     del(Symbollist[Symbollist.index(i)])
-                    
+        
         charslist["Symbols"] = Symbollist
         # print(Symbollist)
         

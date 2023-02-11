@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Simple Password Generator
 Comment=Very simple Python3-based GUI application to generate random password.
-Exec=simple-pwgen
+Exec=simple-pwgen -g
 Icon=simple-pwgen
 Terminal=false
 Type=Application

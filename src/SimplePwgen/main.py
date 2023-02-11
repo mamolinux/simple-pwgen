@@ -54,3 +54,10 @@ def start_SPGCli():
 if args.start_window:
 	# start GUI from terminal
 	start_SPGGui()
+
+if __name__ == "__main__":
+	if args.start_window:
+		# start GUI from terminal
+		start_SPGGui()
+	else:
+		start_SPGCli()
