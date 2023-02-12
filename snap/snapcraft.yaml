@@ -13,6 +13,12 @@ base: core20
 architectures:
   - build-on: [amd64]
 
+slots:
+  simple-pwgen:
+    interface: dbus
+    bus: session
+    name: org.x.simple-pwgen
+
 apps:
   simple-pwgen:
     command: usr/bin/simple-pwgen
@@ -27,6 +33,8 @@ apps:
       - unity7
       - wayland
       - x11
+    slots:
+      - simple-pwgen
 
 parts:
   simple-pwgen:
