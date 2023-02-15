@@ -1,3 +1,28 @@
+simple-pwgen (1.1.0) stable; urgency=medium
+
+  * fix publish-deb workflow (#38)
+  * Add workflow to update mamolinux/stable branch
+  * update badges url (#40)
+  * Create snap of simple-pwgen (#41)
+    - Add snap/snapcraft.yaml
+  * Use relative path for ui and css files (#42)
+    - Place UI and css files into source tree
+    - Use relative path for UI files from source tree
+  * Fix snap source and remove gui part (#43)
+  * Remove python gui script (#44)
+    - Add argument "-g" to run gui
+    - Modify the desktop files
+    - remove gui script from d/simple-pwgen.install
+    - Remove unnecessary codes and white spaces
+  * Precompile gschema (#45)
+    - Precompile gschema files
+    - Remove unnecessary codes
+  * Change snap grade and confinement (#46)
+  * Update readme from version 1.0.8 to 1.0.9 (#47)
+  * Fix dbus access denied error for snap (#48)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Wed, 15 Feb 2023 21:01:29 +0530
+
 simple-pwgen (1.0.9) stable; urgency=medium
 
   * fix auto build and publish deb packaging workflow (#33)
