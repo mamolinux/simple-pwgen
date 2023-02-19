@@ -1,36 +1,36 @@
 # [Simple Password Generator](https://hsbasu.github.io/simple-pwgen)
 
 <p align="center">
-  	<img src="https://raw.githubusercontent.com/hsbasu/simple-pwgen/master/data/icons/simple-pwgen.svg?sanitize=true" height="128" alt="Logo">
+  	<img src="https://raw.githubusercontent.com/mamolinux/simple-pwgen/master/data/icons/simple-pwgen.svg?sanitize=true" height="128" alt="Logo">
 </p>
 
 <p align="center">
 	<a href="#">
-		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/simple-pwgen/ci.yml?branch=master&label=CI%20Build" alt="CI build">
+		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/simple-pwgen/ci.yml?branch=master&label=CI%20Build" alt="CI build">
 	</a>
 	<a href="#">
-		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/simple-pwgen/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
+		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/simple-pwgen/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
 	</a>
-	<a href="https://github.com/hsbasu/simple-pwgen/blob/master/LICENSE">
-		<img src="https://img.shields.io/github/license/hsbasu/simple-pwgen?label=License" alt="License">
+	<a href="https://github.com/mamolinux/simple-pwgen/blob/master/LICENSE">
+		<img src="https://img.shields.io/github/license/mamolinux/simple-pwgen?label=License" alt="License">
 	</a>
   	<a href="#">
-		<img src="https://img.shields.io/github/repo-size/hsbasu/simple-pwgen?label=Repo%20size" alt="GitHub repo size">
+		<img src="https://img.shields.io/github/repo-size/mamolinux/simple-pwgen?label=Repo%20size" alt="GitHub repo size">
   	</a>
-	<a href="https://github.com/hsbasu/simple-pwgen/issues" target="_blank">
-		<img src="https://img.shields.io/github/issues/hsbasu/simple-pwgen?label=Issues" alt="Open Issues">
+	<a href="https://github.com/mamolinux/simple-pwgen/issues" target="_blank">
+		<img src="https://img.shields.io/github/issues/mamolinux/simple-pwgen?label=Issues" alt="Open Issues">
 	</a>
-	<a href="https://github.com/hsbasu/simple-pwgen/pulls" target="_blank">
-		<img src="https://img.shields.io/github/issues-pr/hsbasu/simple-pwgen?label=PR" alt="Open PRs">
+	<a href="https://github.com/mamolinux/simple-pwgen/pulls" target="_blank">
+		<img src="https://img.shields.io/github/issues-pr/mamolinux/simple-pwgen?label=PR" alt="Open PRs">
 	</a>
-  	<a href="https://github.com/hsbasu/simple-pwgen/releases/latest">
-    	<img src="https://img.shields.io/github/v/release/hsbasu/simple-pwgen?label=Latest%20Stable%20Release" alt="GitHub release (latest by date)">
+  	<a href="https://github.com/mamolinux/simple-pwgen/releases/latest">
+    	<img src="https://img.shields.io/github/v/release/mamolinux/simple-pwgen?label=Latest%20Stable%20Release" alt="GitHub release (latest by date)">
   	</a>
 	<a href="#download-latest-version">
-		<img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/total?label=Downloads" alt="Downloads">
+		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.9/simple-pwgen_1.0.9_all.deb">
-		<img src="https://img.shields.io/github/downloads/hsbasu/simple-pwgen/1.0.9/simple-pwgen_1.0.9_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.0/simple-pwgen_1.1.0_all.deb">
+		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/1.1.0/simple-pwgen_1.1.0_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
 	</a>
 </p>
 
@@ -39,10 +39,10 @@ Very simple Python3-based GUI application to generate secure and random password
 ## Download Latest Version
 If you want to generate passwords from terminal, download and install the CLI Backend. To use the graphical interface download both the backend and frontend. For installation, check [here](#)
 <p align="center">
-	<a href="https://github.com/hsbasu/simple-pwgen/zipball/master">Download Source (.zip)</a></br>
-	<a href="https://github.com/hsbasu/simple-pwgen/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.9/python3-simple-pwgen_1.0.9_all.deb">Download Binary (Dependency for GUI) (.deb)</a></br>
-	<a href="https://github.com/hsbasu/simple-pwgen/releases/download/1.0.9/simple-pwgen_1.0.9_all.deb">Download Binary for GUI (.deb)</a>
+	<a href="https://github.com/mamolinux/simple-pwgen/zipball/master">Download Source (.zip)</a></br>
+	<a href="https://github.com/mamolinux/simple-pwgen/tarball/master">Download Source (.tar.gz)</a></br>
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.0/python3-simple-pwgen_1.1.0_all.deb">Download Binary (Dependency for GUI) (.deb)</a></br>
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.0/simple-pwgen_1.1.0_all.deb">Download Binary for GUI (.deb)</a>
 </p>
 
 ## Features and Screenshots
@@ -55,8 +55,8 @@ The main purpose of this application is to generate random and strong passwords.
 5. Show password strength and comments on generated password to help users create strong passwords.
 
 <p align="center">
-	<img src="https://github.com/hsbasu/simple-pwgen/raw/gh-pages/screenshots/main-window-light.png" alt="Main Window (Light)">
-	<img src="https://github.com/hsbasu/simple-pwgen/raw/gh-pages/screenshots/main-window-dark.png" alt="Main Window (Dark)">
+	<img src="https://github.com/mamolinux/simple-pwgen/raw/gh-pages/screenshots/main-window-light.png" alt="Main Window (Light)">
+	<img src="https://github.com/mamolinux/simple-pwgen/raw/gh-pages/screenshots/main-window-dark.png" alt="Main Window (Dark)">
 </p>
 
 **N.B.: This application does not save the generated password. So make sure you save it somewhere safe like using Firefox Lockwise.**
@@ -80,6 +80,7 @@ The main purpose of this application is to generate random and strong passwords.
 
 ## Dependencies
 ```
+gir1.2-gtk-3.0
 python3
 python3-configobj
 python3-gi
@@ -93,8 +94,8 @@ To use or test Simple Password Generator, you need these dependencies to be inst
 ### Debian/Ubuntu based distro
 To install dependencies on Debian/Ubuntu based systems, run:
 ```
-sudo apt install python3 python3-configobj python3-gi \
-python3-setproctitle python3-tldextract
+sudo apt install gir1.2-gtk-3.0 python3 python3-configobj \
+python3-gi python3-setproctitle python3-tldextract
 ```
 **Note**: If you are using `gdebi` to install **Simple Password Generator** from a `.deb` file, it will automatically install the dependencies and you can skip this step.
 
@@ -107,7 +108,7 @@ Remove `apt install` in the command given in [Debian/Ubuntu based distros](#debi
 There are two ways, this app can be installed on a Debian/Ubuntu based system.
 
 ### 1. Download and install binary files
-Download the latest binary .deb files from [here](https://github.com/hsbasu/simple-pwgen/releases/latest).
+Download the latest binary .deb files from [here](https://github.com/mamolinux/simple-pwgen/releases/latest).
 First install the CLI Backend. Then install the GUI Frontend as
 ```
 sudo dpkg -i python3-simple-pwgen*.deb
@@ -119,7 +120,7 @@ If you are having trouble installing the pre-built binary , build them from sour
 #### Debian/Ubuntu based systems
 There are two methods, this app can be installed/used on a Debian/Ubuntu based system. First, download and unzip the source package using:
 ```
-wget https://github.com/hsbasu/simple-pwgen/archive/refs/heads/master.zip
+wget https://github.com/mamolinux/simple-pwgen/archive/refs/heads/master.zip
 unzip master.zip
 cd simple-pwgen-master
 ```
@@ -161,18 +162,18 @@ After it is installed, run `simple-pwgen` from terminal or use the `simple-pwgen
 
 
 ### For Developers
-Instructions for devs are coming soon or create a [PR](https://github.com/hsbasu/simple-pwgen/compare).
+Instructions for devs are coming soon or create a [PR](https://github.com/mamolinux/simple-pwgen/compare).
 
-**I have no knowledge on how to use `meson` or `npm` for testing. If you can offer any help regarding this, please start a discussion [here](https://github.com/hsbasu/simple-pwgen/discussions) or create a [PR](https://github.com/hsbasu/simple-pwgen/compare). It will be more than welcome.**
+**I have no knowledge on how to use `meson` or `npm` for testing. If you can offer any help regarding this, please start a discussion [here](https://github.com/mamolinux/simple-pwgen/discussions) or create a [PR](https://github.com/mamolinux/simple-pwgen/compare). It will be more than welcome.**
 
 ## User Manual
 Coming Soon or create a PR.
 
 ## Issue Tracking and Contributing
 If you are interested to contribute and enrich the code, you are most welcome. You can do it by:
-1. If you find a bug, to open a new issue with details: [Click Here](https://github.com/hsbasu/simple-pwgen/issues)
+1. If you find a bug, to open a new issue with details: [Click Here](https://github.com/mamolinux/simple-pwgen/issues)
 
-2. If you know how to fix a bug or want to add new feature/documentation to the existing package, please create a [Pull Request](https://github.com/hsbasu/simple-pwgen/compare).
+2. If you know how to fix a bug or want to add new feature/documentation to the existing package, please create a [Pull Request](https://github.com/mamolinux/simple-pwgen/compare).
 
 ## Contributors
 
