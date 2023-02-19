@@ -65,7 +65,7 @@ class SimplepwgenWindow():
 	def __init__(self, application):
 		
 		self.application = application
-		self.settings = Gio.Settings(schema_id="org.x.simple-pwgen")
+		self.settings = Gio.Settings(schema_id="org.mamolinux.simple-pwgen")
 		self.generator = PasswordGenerator()
 		self.icon_theme = Gtk.IconTheme.get_default()
 		
@@ -362,5 +362,5 @@ class SimplepwgenWindow():
 		self.pw_comment_field.set_text(pw_comment)
 		
 def run_SPGwindow():
-	application = simple_pwgen("org.x.simple-pwgen", Gio.ApplicationFlags.FLAGS_NONE)
+	application = simple_pwgen("org.mamolinux.simple-pwgen", Gio.ApplicationFlags.FLAGS_NONE)
 	application.run()
