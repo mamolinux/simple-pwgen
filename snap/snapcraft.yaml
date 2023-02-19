@@ -17,7 +17,7 @@ slots:
   simple-pwgen:
     interface: dbus
     bus: session
-    name: org.x.simple-pwgen
+    name: org.mamolinux.simple-pwgen
 
 apps:
   simple-pwgen:
@@ -28,20 +28,16 @@ apps:
     extensions: [gnome-3-38]
     plugs:
       - desktop
-      - desktop-legacy
       - home
-      - unity7
-      - wayland
-      - x11
     slots:
       - simple-pwgen
 
 parts:
   simple-pwgen:
     source: https://github.com/hsbasu/simple-pwgen.git
+    source-branch: master
     plugin: python
     build-environment:
-      - SNAPCRAFT_PYTHON_VENV_ARGS: --system-site-packages
       - PATH: $SNAPCRAFT_PART_INSTALL/bin:$PATH
       # By default, pip installs everything into '/',
       # so '/lib/python3.*/site-packages' should be
