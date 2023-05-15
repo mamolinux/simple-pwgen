@@ -28,6 +28,7 @@ import math
 import os
 import random
 import threading
+from cryptography.fernet import Fernet
 from string import ascii_uppercase, ascii_lowercase, digits, punctuation
 
 
@@ -310,39 +311,46 @@ class PasswordGenerator():
         # use default configuration
         self.load_config()
         
+        password = []  # empty list for password
+        
         includechars = PasswordGenerator.includeonlyChars(self)
         includecases = PasswordGenerator.includeCases(self, self.pwlength)
         
         self.pool = "".join(includechars["Lowercases"] + includechars["Uppercases"] + includechars["Digits"] + includechars["Symbols"])
         
-        password = ''  # empty string for password
-        
         for i in range(self.pwlength):
             # this is to ensure there is minimum number of lowercases desired by user
             if i in includecases["Lowercases"]:
-                password += self.TrueRand.choice(includechars["Lowercases"])
+                password.append(self.TrueRand.choice(includechars["Lowercases"]))
             
             # this is to ensure there is minimum number of uppercases desired by user
             elif i in includecases["Uppercases"]:
-                password += self.TrueRand.choice(includechars["Uppercases"])
+                password.append(self.TrueRand.choice(includechars["Uppercases"]))
             
             # this is to ensure there is minimum number of digits desired by user
             elif i in includecases["Digits"]:
-                password += self.TrueRand.choice(includechars["Digits"])
+                password.append(self.TrueRand.choice(includechars["Digits"]))
             
             # this is to ensure there is minimum number of symbols/characters desired by user
             elif i in includecases["Symbols"]:
-                password += self.TrueRand.choice(includechars["Symbols"])
+                password.append(self.TrueRand.choice(includechars["Symbols"]))
             
             else:  # adds a random character from pool
-                password += self.TrueRand.choice(self.pool)
+                password.append(self.TrueRand.choice(self.pool))
         
         # shuffle the password again
-        password = list(password)
         random.shuffle(password)
-        password = ''.join(password)
+        word = ''.join(password)
         
-        return password  # returns the password string
+        # encrypt generated password
+        keyVar = Fernet.generate_key()
+        ferVar = Fernet(keyVar)
+        encpassword = ferVar.encrypt(word.encode())
+        
+        password = None
+        word = None
+        
+        return [ferVar, encpassword]  # returns the encrypted key and password string
     
     def check_pwstrength(self, passwd):
         score = 0

@@ -36,12 +36,12 @@ def start_SPGCli():
 	# generate password to stdout
 	# using configurations from config file
 	generator = PasswordGenerator()
-	passwd = generator.GeneratePW()
-	[pw_score, pw_comment, color] = generator.check_pwstrength(passwd)
-	[pw_strength, pw_entropy, num_guess_crack, timerq_crack] = generator.check_pwentrpy(passwd)
+	[ferVar, encpasswd] = generator.GeneratePW()
+	[pw_score, pw_comment, color] = generator.check_pwstrength(ferVar.decrypt(encpasswd).decode())
+	[pw_strength, pw_entropy, num_guess_crack, timerq_crack] = generator.check_pwentrpy(ferVar.decrypt(encpasswd).decode())
 	
 	print("")
-	print("Generated Password: "+str(passwd))
+	print("Generated Password: "+str(ferVar.decrypt(encpasswd).decode()))
 	print("")
 	print("Strength: "+str(pw_strength))
 	print("Score: "+str(pw_score))
