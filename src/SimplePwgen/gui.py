@@ -33,7 +33,7 @@ warnings.filterwarnings("ignore")
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk
 
-from SimplePwgen.common import APP, CONFIG_FILE, LOCALE_DIR, UI_PATH, __version__, PasswordGenerator
+from SimplePwgen.common import APP, CONFIG_FILE, LOCALE_DIR, UI_PATH, __version__, methods, PasswordGenerator
 
 setproctitle.setproctitle(APP)
 
@@ -70,13 +70,49 @@ class SimplepwgenWindow():
 		self.icon_theme = Gtk.IconTheme.get_default()
 		
 		# Set the Glade file
-		gladefile = UI_PATH + "simple-pwgen.ui"
+		main_window = UI_PATH + "simple-pwgen.ui"
+		defaultmethod = UI_PATH + "default-method.ui"
+		dicemethod = UI_PATH + "diceware-method.ui"
+		pin_generation = UI_PATH + "pin-generation.ui"
 		self.builder = Gtk.Builder()
-		self.builder.add_from_file(gladefile)
+		self.builder.add_from_file(main_window)
+		self.builder.add_from_file(defaultmethod)
+		self.builder.add_from_file(dicemethod)
+		self.builder.add_from_file(pin_generation)
 		self.window = self.builder.get_object("MainWindow")
+		main_box = self.builder.get_object("main_box")
 		self.window.set_title(_("Simple Password Generator"))
 		
 		# Create variables to quickly access dynamic widgets
+		# Combo box
+		methods_store = Gtk.ListStore(str)
+		self.methods = methods
+		for method in self.methods:
+			methods_store.append([method])
+		self.method_combo = self.builder.get_object("method_name_combo")
+		renderer = Gtk.CellRendererText()
+		self.method_combo.pack_start(renderer, True)
+		self.method_combo.add_attribute(renderer, "text", 0)
+		self.method_combo.set_model(methods_store)
+		
+		# Attach input UIs
+		# default method
+		self.default_method = self.builder.get_object("default_input")
+		main_box.pack_start(self.default_method, True, True, 0)
+		main_box.reorder_child(self.default_method, 1)
+		
+		# # PIN Generation
+		# self.gen_pin = self.builder.get_object("pin_input")
+		# main_box.pack_start(self.gen_pin, True, True, 0)
+		# main_box.reorder_child(self.gen_pin, 1)
+		# self.gen_pin.set_visible(False)
+		
+		# # Diceware method
+		# self.dice_method = self.builder.get_object("diceware_input")
+		# main_box.pack_start(self.dice_method, True, True, 0)
+		# main_box.reorder_child(self.dice_method, 1)
+		# self.gen_pin.set_visible(False)
+		
 		# input values
 		self.pwlengthfield = self.builder.get_object("pwlengthfield")
 		self.lcase_switch = self.builder.get_object("lcase_switch")
@@ -111,6 +147,8 @@ class SimplepwgenWindow():
 		self.quit_button = self.builder.get_object("quit_button")
 		
 		# Widget signals
+		# self.method_combo.connect("changed", self.method_combo_changed)
+		
 		self.reset_button.connect("clicked", self.on_reset_button)
 		self.save_button.connect("clicked", self.on_save_button)
 		self.generate_button.connect("clicked", self.on_generate_button)
@@ -158,6 +196,8 @@ class SimplepwgenWindow():
 	def load_conf(self):
 		
 		self.generator.load_config()
+		
+		self.method_combo.set_active(self.generator.gen_method)
 		self.pwlengthfield.set_text(str(self.generator.pwlength))
 		
 		self.lcase_switch.set_active(self.generator.lowercase)
@@ -199,6 +239,27 @@ class SimplepwgenWindow():
 		else:
 			self.minsymbol_num.set_sensitive(True)
 			self.excludesymbol_field.set_sensitive(True)
+	
+	# def method_combo_changed(self, combo):
+	# 	method_iter = combo.get_active_iter()
+	# 	if method_iter is not None:
+	# 		model = combo.get_model()
+	# 		method = model[method_iter][0]
+	# 		if method == methods[0]:
+	# 			# Attach input fields of Default Method
+	# 			self.default_method.set_visible(True)
+	# 			self.dice_method.set_visible(False)
+	# 			self.gen_pin.set_visible(False)
+	# 		elif method == methods[1]:
+	# 			# Attach input fields of Diceware Method
+	# 			self.default_method.set_visible(False)
+	# 			self.dice_method.set_visible(True)
+	# 			self.gen_pin.set_visible(False)
+	# 		elif method == methods[2]:
+	# 			# Attach input fields of PIN generation
+	# 			self.default_method.set_visible(False)
+	# 			self.dice_method.set_visible(False)
+	# 			self.gen_pin.set_visible(True)
 	
 	def open_keyboard_shortcuts(self, widget):
 		gladefile = UI_PATH + "shortcuts.ui"
@@ -298,8 +359,9 @@ class SimplepwgenWindow():
 			symbol = 1
 		else:
 			symbol = 0
-			
+		
 		self.generator.config['user'] = {
+			'generation-method': self.method_combo.get_active(),
 			'pwlength': self.pwlengthfield.get_text(),
 			'lowercase': lcase,
 			'lowercase_num': self.minlcase_num.get_text(),
