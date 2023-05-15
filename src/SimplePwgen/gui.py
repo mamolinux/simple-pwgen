@@ -382,8 +382,8 @@ class SimplepwgenWindow():
 		self.load_conf()
 	
 	def on_generate_button(self, widget):
-		self.password = self.generator.GeneratePW()
-		self.passwordfield.set_text(self.password)
+		[self.ferVar, self.encpasswd] = self.generator.GeneratePW()
+		self.passwordfield.set_text(self.ferVar.decrypt(self.encpasswd).decode())
 	
 	def on_showhide_button(self, widget):
 		if self.passwordfield.get_visibility() == False:
@@ -395,7 +395,7 @@ class SimplepwgenWindow():
 	
 	def on_copy_button(self, widget):
 		self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
-		self.clipboard.set_text(self.password, -1)
+		self.clipboard.set_text(self.ferVar.decrypt(self.encpasswd).decode(), -1)
 		
 	def load_css(self, color: str):
 		css_provider = Gtk.CssProvider()
