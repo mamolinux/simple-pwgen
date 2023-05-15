@@ -56,6 +56,7 @@ __version__ = open(version_file, 'r').readlines()[0]
 CONFIG_DIR = os.path.expanduser('~/.config/simple-pwgen/')
 CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
 UI_PATH = os.path.dirname(os.path.realpath(__file__)) + "/ui/"
+methods = ["Default Method", "Diceware Method", "PIN"]
 
 
 # This is the backend.
@@ -86,6 +87,14 @@ class PasswordGenerator():
         """
         
         self.config.read(CONFIG_FILE)
+        try:
+            try:
+                self.gen_method = int(self.config["user"]['generation-method'])
+            except:
+                print('User configuration is missing or not readable. Trying default configuration')
+                self.gen_method = int(self.config["default"]['generation-method'])
+        except KeyError:
+                self.gen_method = 0
         try:
             self.pwlength = int(self.config["user"]['pwlength'])
             self.lowercase = int(self.config["user"]['lowercase'])
@@ -130,6 +139,7 @@ class PasswordGenerator():
             pass
         else:
             self.config['default'] = {
+                'generation-method': 0,
                 'pwlength': 8,
                 'lowercase': 1,
                 'lowercase_num': 1,
@@ -451,20 +461,3 @@ class PasswordGenerator():
         timerq = _("%s years %s months %s days %s hours %s minutes %s seconds") % (year, month, day, hour, minute, secnd)
         
         return [strength, entropy, num_guess, timerq]
-
-if __name__ == "__main__":
-    generator = PasswordGenerator()
-    passwd = generator.GeneratePW()
-    [pw_score, pw_comment, color] = generator.check_pwstrength(passwd)
-    [pw_strength, pw_entropy, num_guess_crack, timerq_crack] = generator.check_pwentrpy(passwd)
-    
-    print("Generated Password: "+str(passwd))
-    print("")
-    print("Strength: "+str(pw_strength))
-    print("Score: "+str(pw_score))
-    print("Entropy: "+str(pw_entropy))
-    print("Number of Guesses: "+str(num_guess_crack))
-    print("Time required to crack: "+str(timerq_crack))
-    print("Comment: "+str(pw_comment))
-    print("")
-    
