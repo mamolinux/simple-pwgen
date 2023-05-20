@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 
+
+Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+
+This file is part of simple-pwgen.
+
+simple-pwgen is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+simple-pwgen is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with simple-pwgen.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <!-- n-columns=3 n-rows=1 -->
+  <object class="GtkGrid" id="pin_input">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="halign">center</property>
+    <property name="border-width">10</property>
+    <property name="row-spacing">10</property>
+    <property name="column-spacing">10</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">end</property>
+        <property name="label" translatable="yes">PIN Length:</property>
+        <property name="selectable">True</property>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="pin_length">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="tooltip-text" translatable="yes">Minimum number of Digits to be included.</property>
+        <property name="max-length">3</property>
+        <property name="caps-lock-warning">False</property>
+        <property name="placeholder-text" translatable="yes">Enter length of PIN</property>
+        <property name="input-purpose">digits</property>
+      </object>
+      <packing>
+        <property name="left-attach">1</property>
+        <property name="top-attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="excludedigits">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="max-length">9</property>
+        <property name="width-chars">40</property>
+        <property name="caps-lock-warning">False</property>
+        <property name="placeholder-text" translatable="yes">Exclude Digits</property>
+        <property name="input-purpose">digits</property>
+      </object>
+      <packing>
+        <property name="left-attach">2</property>
+        <property name="top-attach">0</property>
+      </packing>
+    </child>
+  </object>
+</interface>
