@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of simple-pwgen.
 #
@@ -142,7 +142,6 @@ class SimplepwgenWindow():
 		self.reset_button = self.builder.get_object("reset_button")
 		self.save_button = self.builder.get_object("save_button")
 		self.generate_button = self.builder.get_object("generate_button")
-		self.showhide_button = self.builder.get_object("showhide_button")
 		self.copy_button = self.builder.get_object("copy_button")
 		self.quit_button = self.builder.get_object("quit_button")
 		
@@ -152,7 +151,7 @@ class SimplepwgenWindow():
 		self.reset_button.connect("clicked", self.on_reset_button)
 		self.save_button.connect("clicked", self.on_save_button)
 		self.generate_button.connect("clicked", self.on_generate_button)
-		self.showhide_button.connect("clicked", self.on_showhide_button)
+		self.passwordfield.connect("icon-press", self.on_showhide_button)
 		self.copy_button.connect("clicked", self.on_copy_button)
 		self.quit_button.connect("clicked", self.on_quit)
 		self.passwordfield.connect("changed", self.show_pwstrength)
@@ -385,13 +384,13 @@ class SimplepwgenWindow():
 		[self.ferVar, self.encpasswd] = self.generator.GeneratePW()
 		self.passwordfield.set_text(self.ferVar.decrypt(self.encpasswd).decode())
 	
-	def on_showhide_button(self, widget):
-		if self.passwordfield.get_visibility() == False:
+	def on_showhide_button(self, entry, icon_pos, event):
+		if entry.get_visibility() == False:
 			self.passwordfield.set_visibility(True)
-			self.showhide_button.set_label("Hide")
+			entry.set_icon_from_icon_name(icon_pos, 'view-conceal-symbolic')
 		else:
 			self.passwordfield.set_visibility(False)
-			self.showhide_button.set_label("Show")
+			entry.set_icon_from_icon_name(icon_pos, 'view-reveal-symbolic')
 	
 	def on_copy_button(self, widget):
 		self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
