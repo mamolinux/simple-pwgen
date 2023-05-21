@@ -29,8 +29,8 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.0/simple-pwgen_1.1.0_all.deb">
-		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/1.1.0/simple-pwgen_1.1.0_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/simple-pwgen_1.1.1_all.deb">
+		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/1.1.1/simple-pwgen_1.1.1_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
 	</a>
 </p>
 
@@ -41,8 +41,8 @@ If you want to generate passwords from terminal, download and install the CLI Ba
 <p align="center">
 	<a href="https://github.com/mamolinux/simple-pwgen/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/mamolinux/simple-pwgen/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.0/python3-simple-pwgen_1.1.0_all.deb">Download Binary (Dependency for GUI) (.deb)</a></br>
-	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.0/simple-pwgen_1.1.0_all.deb">Download Binary for GUI (.deb)</a>
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/python3-simple-pwgen_1.1.1_all.deb">Download Binary (Dependency for GUI) (.deb)</a></br>
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/simple-pwgen_1.1.1_all.deb">Download Binary for GUI (.deb)</a>
 </p>
 
 ## Features and Screenshots
