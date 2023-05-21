@@ -1,3 +1,28 @@
+simple-pwgen (1.1.1) stable; urgency=medium
+
+  * fix permissions of github actions
+  * Use new gschema name (#49)
+  * Update readme with organization mamolinux (#50)
+  * Prepare to support other generation methods (#51)
+    - Plan to include method for PIN generation
+    - Plan to include method for password generation
+      using diceware method
+  * Encrypted string for better security; closes #17 (#52)
+    - Generated password string is encrypted before
+      any communication and decrypted just before use.
+  * Update debian packaging (#53)
+    - d/control: update compatibility to 13
+    - d/rules: clean up unused rules and
+      avoid inclusion of compiled gschema file
+  * Add and update ui for methods (#54)
+    - Add ui for pin generation and diceware method
+    - Update copyright in ui files
+  * Use image icon for show/hide and copy (#55)
+    - Use password reveal icon to show or hide password
+    - Use copy icon button to copy the password to clipboard
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sun, 21 May 2023 09:00:36 +0530
+
 simple-pwgen (1.1.0) stable; urgency=medium
 
   * fix publish-deb workflow (#38)
