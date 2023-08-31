@@ -47,8 +47,8 @@ parser.add_argument('-V', '--version', action='store_true', dest='show_version',
 args = parser.parse_args()
 
 if args.show_version:
-    print("%s: version %s" % (APP, __version__))
-    sys.exit(0)
+	print("%s: version %s" % (APP, __version__))
+	sys.exit(0)
 
 def start_SPGGui():
 	# initiaing app window
