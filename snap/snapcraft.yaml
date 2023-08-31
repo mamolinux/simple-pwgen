@@ -9,7 +9,7 @@ contact: https://github.com/hsbasu
 grade: stable
 confinement: strict
 
-base: core20
+base: core22
 architectures:
   - build-on: [amd64]
 
@@ -23,9 +23,9 @@ apps:
   simple-pwgen:
     command: usr/bin/simple-pwgen
     environment:
-      PYTHONPATH: $SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
+      PYTHONPATH: $SNAP/lib/python3.10/site-packages:$SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
     desktop: usr/share/applications/simple-pwgen.desktop
-    extensions: [gnome-3-38]
+    extensions: [gnome]
     plugs:
       - desktop
       - home
@@ -38,11 +38,7 @@ parts:
     source-branch: master
     plugin: python
     build-environment:
-      - PATH: $SNAPCRAFT_PART_INSTALL/bin:$PATH
-      # By default, pip installs everything into '/',
-      # so '/lib/python3.*/site-packages' should be
-      # added to PYTHONPATH
-      - PYTHONPATH: '$SNAPCRAFT_PART_INSTALL/lib/python3.8/site-packages:$SNAPCRAFT_PART_INSTALL/usr/lib/python3/dist-packages'
+      - PATH: $CRAFT_PART_INSTALL/bin:$PATH
     build-packages:
       - libglib2.0-bin  # to generate compiled gschema
     stage-packages:
@@ -50,22 +46,24 @@ parts:
       - gir1.2-gtk-3.0
       - python3
       - python3-configobj
+      - python3-cryptography
       - python3-gi
       - python3-setproctitle
     
     override-build: |
-      snapcraftctl build
+      set -eu
+      craftctl default
       # By default, pip will install everything
       # under '/', e.g. into '/bin', '/share'
       # Move everything to from '/' to '/usr'
-      mv $SNAPCRAFT_PART_INSTALL/bin/simple-pwgen* $SNAPCRAFT_PART_INSTALL/usr/bin
-      cp -a $SNAPCRAFT_PART_INSTALL/share/{applications,glib-2.0,icons} $SNAPCRAFT_PART_INSTALL/usr/share
-      rm -r $SNAPCRAFT_PART_INSTALL/share/{applications,glib-2.0,icons}
+      mv $CRAFT_PART_INSTALL/bin/simple-pwgen* $CRAFT_PART_INSTALL/usr/bin
+      cp -a $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons} $CRAFT_PART_INSTALL/usr/share
+      rm -r $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons}
     
     override-prime: |
       set -eu
-      snapcraftctl prime
+      craftctl default
       # Fix-up application icon lookup
       sed --in-place 's|^Icon=.*|Icon=\${SNAP}/usr/share/icons/hicolor/scalable/apps/simple-pwgen.svg|' usr/share/applications/simple-pwgen.desktop
       # Recompile all gschemas
-      glib-compile-schemas ${SNAPCRAFT_PRIME}/usr/share/glib-2.0/schemas/
+      glib-compile-schemas ${CRAFT_PRIME}/usr/share/glib-2.0/schemas/
