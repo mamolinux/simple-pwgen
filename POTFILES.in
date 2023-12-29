@@ -1,0 +1,11 @@
+data/org.mamolinux.simple-pwgen.gschema.xml.in
+data/simple-pwgen.desktop.in
+src/SimplePwgen/common.py
+src/SimplePwgen/gui.py
+src/SimplePwgen/__init__.py
+src/SimplePwgen/main.py
+src/SimplePwgen/ui/default-method.ui
+src/SimplePwgen/ui/diceware-method.ui
+src/SimplePwgen/ui/pin-generation.ui
+src/SimplePwgen/ui/shortcuts.ui
+src/SimplePwgen/ui/simple-pwgen.ui
