@@ -1,6 +1,5 @@
 import glob
 import os
-import pathlib
 import subprocess
 
 from setuptools import setup
@@ -35,24 +34,28 @@ class install_data(distutils.command.install_data.install_data):
         gschema_dir = os.path.join(self.install_dir, gschema_dir_suffix)
         self.spawn(["glib-compile-schemas", gschema_dir])
 
-PO_FILES = 'po/simple-pwgen.po'
+data_files = [('share/applications', glob.glob("data/applications/*.desktop")),
+			('share/icons/hicolor/scalable/apps', glob.glob("data/icons/*")),
+			(gschema_dir_suffix, glob.glob("data/schema/*.xml"))
+			]
 
 def create_mo_files():
-	mo_files = []
+	po_files = glob.glob("po/*.po")
 	prefix = 'simple-pwgen'
 	
-	for po_path in glob.glob(str(pathlib.Path(prefix) / PO_FILES)):
-		mo = pathlib.Path(po_path.replace('.po', '.mo'))
-		
-		subprocess.run(['msgfmt', '-o', str(mo), po_path], check=True)
-		mo_files.append(str(mo.relative_to(prefix)))
+	for po_file in po_files:
+		po_name = os.path.splitext(os.path.split(po_file)[1])[0]
+		replace_txt = "%s-" % prefix
+		lang = po_name.replace(replace_txt, '')
+		os.makedirs("data/locale/%s" % lang, exist_ok=True)
+		mo = "data/locale/%s/%s.mo" % (lang, prefix)
+		subprocess.run(['msgfmt', '-o', str(mo), po_file], check=True)
 	
-	return mo_files
+		mo_file = map(lambda i: ('share/locale/%s/LC_MESSAGES' % lang, [i+'/%s.mo' % prefix]), glob.glob('data/locale/%s' % lang))
+		data_files.extend(mo_file)
 
-setup(data_files=[('share/applications', glob.glob("data/applications/*.desktop")),
-			('share/icons/hicolor/scalable/apps', glob.glob("data/icons/*")),
-			(gschema_dir_suffix, glob.glob("data/schema/*.xml")),
-			('share/locale', create_mo_files())
-			],
+create_mo_files()
+
+setup(data_files=data_files,
 			cmdclass = {'install_data': install_data}
 )
