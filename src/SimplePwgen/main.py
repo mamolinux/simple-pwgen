@@ -36,13 +36,13 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
-description = 'Very simple Python3-based GUI application to generate secure and random password.'
+description =_('Very simple Python3-based GUI application to generate secure and random password.')
 
 # Parse arguments
 parser = argparse.ArgumentParser(prog=APP, description=description, conflict_handler='resolve')
 
-parser.add_argument('-g', '--gui', action='store_true', dest='start_window', default=False, help=("Start GUI window"))
-parser.add_argument('-V', '--version', action='store_true', dest='show_version', default=False, help=("Show version and exit"))
+parser.add_argument('-g', '--gui', action='store_true', dest='start_window', default=False, help=_("Start GUI window"))
+parser.add_argument('-V', '--version', action='store_true', dest='show_version', default=False, help=_("Show version and exit"))
 
 args = parser.parse_args()
 
@@ -64,14 +64,14 @@ def start_SPGCli():
 	[pw_strength, pw_entropy, num_guess_crack, timerq_crack] = generator.check_pwentrpy(ferVar.decrypt(encpasswd).decode())
 	
 	print("")
-	print("Generated Password: "+str(ferVar.decrypt(encpasswd).decode()))
+	print(_("Generated Password: ")+str(ferVar.decrypt(encpasswd).decode()))
 	print("")
-	print("Strength: "+str(pw_strength))
-	print("Score: "+str(pw_score))
-	print("Entropy: "+str(pw_entropy))
-	print("Number of Guesses: "+str(num_guess_crack))
-	print("Time required to crack: "+str(timerq_crack))
-	print("Comment: "+str(pw_comment))
+	print(_("Strength: ")+str(pw_strength))
+	print(_("Score: ")+str(pw_score))
+	print(_("Entropy: ")+str(pw_entropy))
+	print(_("Number of Guesses: ")+str(num_guess_crack))
+	print(_("Time required to crack: ")+str(timerq_crack))
+	print(_("Comment: ")+str(pw_comment))
 	print("")
 
 if args.start_window:
