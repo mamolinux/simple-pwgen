@@ -57,7 +57,7 @@ __version__ = open(version_file, 'r').readlines()[0]
 CONFIG_DIR = os.path.expanduser('~/.config/simple-pwgen/')
 CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
 UI_PATH = os.path.dirname(os.path.realpath(__file__)) + "/ui/"
-methods = ["Default Method", "Diceware Method", "PIN"]
+methods = [_("Default Method"), _("Diceware Method"), _("PIN")]
 
 
 # This is the backend.
@@ -92,7 +92,7 @@ class PasswordGenerator():
 			try:
 				self.gen_method = int(self.config["user"]['generation-method'])
 			except:
-				print('User configuration is missing or not readable. Trying default configuration')
+				print(_('User configuration is missing or not readable. Trying default configuration'))
 				self.gen_method = int(self.config["default"]['generation-method'])
 		except KeyError:
 				self.gen_method = 0
@@ -111,7 +111,7 @@ class PasswordGenerator():
 			self.symbol_num = int(self.config["user"]['symbol_num'])
 			self.excludeSymbol = self.config["user"]['excludeSymbol']
 		except:
-			print('User configuration is missing or not readable. Trying default configuration')
+			print(_('User configuration is missing or not readable. Trying default configuration'))
 			self.pwlength = int(self.config["default"]['pwlength'])
 			self.lowercase = int(self.config["default"]['lowercase'])
 			self.lowercase_num = int(self.config["default"]['lowercase_num'])
@@ -162,30 +162,30 @@ class PasswordGenerator():
 		min_required_length = 0
 		if self.lowercase == True:
 			if self.lowercase_num == 0:
-				print("Warning: minimum number of lowercases should be greater than 0")
+				print(_("Warning: minimum number of lowercases should be greater than 0"))
 			else:
 				min_required_length += self.lowercase_num
 		
 		if self.uppercase == True:
 			if self.uppercase_num == 0:
-				print("Warning: minimum number of UPPERcases should be greater than 0")
+				print(_("Warning: minimum number of UPPERcases should be greater than 0"))
 			else:
 				min_required_length += self.uppercase_num
 		
 		if self.digit == True:
 			if self.digit_num == 0:
-				print("Warning: minimum number of Digits should be greater than 0")
+				print(_("Warning: minimum number of Digits should be greater than 0"))
 			else:
 				min_required_length += self.digit_num
 		
 		if self.symbol == True:
 			if self.symbol_num == 0:
-				print("Warning: minimum number of Symbols should be greater than 0")
+				print(_("Warning: minimum number of Symbols should be greater than 0"))
 			else:
 				min_required_length += self.symbol_num
 		
 		if min_required_length > self.pwlength:
-			print("Error: Minimum required length exceeded given length!")
+			print(_("Error: Minimum required length exceeded given length!"))
 			
 			return 1
 	
@@ -427,7 +427,7 @@ class PasswordGenerator():
 		return [score, comment, color]
 		
 	def check_pwentrpy(self, passwd):
-		strength_comment = ["Very Weak", "Weak", "Reasonable", "Fairly Strong", "Strong", "Very Strong", "Super Strong"]
+		strength_comment = [_("Very Weak"), _("Weak"), _("Reasonable"), _("Fairly Strong"), _("Strong"), _("Very Strong"), _("Super Strong")]
 		length = len(passwd)
 		pool_size = len(self.pool)
 		entropy = length*math.log2(pool_size)

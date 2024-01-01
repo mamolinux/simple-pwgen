@@ -6,6 +6,7 @@
 src/SimplePwgen/VERSION
 build/*
 dist/*
+*.mo
 
 # debian build files
 .pybuild/*
