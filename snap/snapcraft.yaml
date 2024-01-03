@@ -4,7 +4,7 @@ description: |
   Very simple Python3-based GUI application
   to generate random password.
 version: git
-contact: https://github.com/hsbasu
+contact: https://hsbasu.github.io/simple-pwgen
 
 grade: stable
 confinement: strict
@@ -12,6 +12,7 @@ confinement: strict
 base: core22
 architectures:
   - build-on: [amd64]
+    build-for: all
 
 slots:
   simple-pwgen:
@@ -34,21 +35,19 @@ apps:
 
 parts:
   simple-pwgen:
-    source: https://github.com/hsbasu/simple-pwgen.git
+    source: https://github.com/mamolinux/simple-pwgen.git
     source-branch: master
     plugin: python
     build-environment:
       - PATH: $CRAFT_PART_INSTALL/bin:$PATH
     build-packages:
       - libglib2.0-bin  # to generate compiled gschema
+      - gettext  # To generate translation files
     stage-packages:
       - gobject-introspection
       - gir1.2-gtk-3.0
       - python3
-      - python3-configobj
       - python3-cryptography
-      - python3-gi
-      - python3-setproctitle
     
     override-build: |
       set -eu
@@ -57,8 +56,8 @@ parts:
       # under '/', e.g. into '/bin', '/share'
       # Move everything to from '/' to '/usr'
       mv $CRAFT_PART_INSTALL/bin/simple-pwgen* $CRAFT_PART_INSTALL/usr/bin
-      cp -a $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons} $CRAFT_PART_INSTALL/usr/share
-      rm -r $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons}
+      cp -a $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons,locale} $CRAFT_PART_INSTALL/usr/share
+      rm -r $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons,locale}
     
     override-prime: |
       set -eu
