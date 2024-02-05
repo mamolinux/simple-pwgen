@@ -10,9 +10,6 @@ grade: stable
 confinement: strict
 
 base: core22
-architectures:
-  - build-on: [amd64]
-    build-for: all
 
 slots:
   simple-pwgen:
