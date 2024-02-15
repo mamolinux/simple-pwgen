@@ -395,7 +395,7 @@ class SimplepwgenWindow():
 	def on_copy_button(self, widget):
 		self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 		self.clipboard.set_text(self.ferVar.decrypt(self.encpasswd).decode(), -1)
-		
+	
 	def load_css(self, color: str):
 		css_provider = Gtk.CssProvider()
 		Priority = Gtk.STYLE_PROVIDER_PRIORITY_USER
