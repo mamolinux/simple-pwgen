@@ -1,3 +1,48 @@
+simple-pwgen (1.1.2) stable; urgency=medium
+
+  * Update readme with version 1.1.1 (#56)
+  * Update publishing and funding workflows (#57)
+    - Update workflow for publishing deb packages
+    - Update funding
+  * Update snap core and fix tabs (#58)
+    - use core22
+    - Convert spaces to tabs in common.py and main.py
+  * Prepare translations (#59)
+    - Add all files to be translated in POTFILES
+    - Add .pot file
+    - Add .pot update script
+  * Add translations; closes #8, #11 (#60)
+    - Update translation template (pot file)
+    - Add translations for bengali
+      and British English
+  * Add gettext as build dependency (#61)
+  * Update build scripts and desktop data (#62)
+    - Update python build scripts
+    - Update schema files
+    - Update desktop file creator script
+  * Update debian packaging (#63)
+    - Include translation files
+    - Rename manual
+  * Update translations (#64)
+    - Make existing strings translatable
+    - Add .mo files to .gitignore
+  * Update snap (#65)
+    - Update website
+    - Build for all archs
+    - Update source
+    - Add locales
+  * Fix snap builds on launchpad (#66)
+  * Add workflow to test snap packaging (#67)
+    - Update runner versions
+  * Update python build-script to get version (#68)
+  * Add snap-store and launchpad installation (#69)
+  * Add a scrollbar to the main grid (#70)
+    - Use scrollbar on low resolution displays
+      where the whole window is not visible
+      simultaneously
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Thu, 15 Feb 2024 20:06:19 +0530
+
 simple-pwgen (1.1.1) stable; urgency=medium
 
   * fix permissions of github actions
