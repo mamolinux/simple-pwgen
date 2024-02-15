@@ -1,0 +1,29 @@
+name: Test Snap packaging
+
+on:
+  push:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  gnome-snap:
+    name: "Snap"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Use source from current branch
+        run: |
+          sed -i 's/source:.*/source: ./g' snap/snapcraft.yaml
+      - name: Test snap building
+        uses: snapcore/action-build@v1
+        id: snapcraft-build
+        with:
+          snapcraft-args: "--verbose"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: simple-pwgen-snap
+          path: ${{ steps.snapcraft-build.outputs.snap }}
