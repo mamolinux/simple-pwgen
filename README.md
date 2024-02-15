@@ -37,6 +37,18 @@
 Very simple Python3-based GUI application to generate secure and random password.
 
 ## Download Latest Version
+
+### Stores/Ubuntu Private Archive
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/simple-pwgen)
+
+Add the Launchpad PPA
+```$
+sudo add-apt-repository ppa:mamolinux/gui-apps
+sudo apt update
+sudo apt install simple-pwgen
+```
+
+### Github Releases
 If you want to generate passwords from terminal, download and install the CLI Backend. To use the graphical interface download both the backend and frontend. For installation, check [here](#)
 <p align="center">
 	<a href="https://github.com/mamolinux/simple-pwgen/zipball/master">Download Source (.zip)</a></br>
@@ -63,6 +75,8 @@ The main purpose of this application is to generate random and strong passwords.
 
 ## Contents
 - [Download Latest Version](#download-latest-version)
+	- [Stores/Ubuntu Private Archive](#storesubuntu-private-archive)
+	- [Github Releases](#github-releases)
 - [Features and Screenshots](#features-and-screenshots)
 - [Dependencies](#dependencies)
 	- [Debian/Ubuntu based systems](#debianubuntu-based-distro)
@@ -87,7 +101,7 @@ python3-gi
 python3-setproctitle
 python3-tldextract
 ```
-To use or test Simple Password Generator, you need these dependencies to be installed.
+To use or test **Simple Password Generator**, you need these dependencies to be installed.
 
 **Note**: If you are using `gdebi` to install **Simple Password Generator** from a `.deb` file, it will automatically install the dependencies and you can skip this step.
 
@@ -110,8 +124,8 @@ There are two ways, this app can be installed on a Debian/Ubuntu based system.
 ### 1. Download and install binary files
 Download the latest binary .deb files from [here](https://github.com/mamolinux/simple-pwgen/releases/latest).
 First install the CLI Backend. Then install the GUI Frontend as
-```
-sudo dpkg -i python3-simple-pwgen*.deb
+```$
+sudo dpkg -i python3-simple-pwgen*.deb	# dependency to simple-pwgen*.deb
 sudo dpkg -i simple-pwgen*.deb
 ```
 
