@@ -29,12 +29,32 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/simple-pwgen_1.1.1_all.deb">
-		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/1.1.1/simple-pwgen_1.1.1_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.2/simple-pwgen_1.1.2_all.deb">
+		<img src="https://img.shields.io/github/downloads/mamolinux/simple-pwgen/1.1.1/simple-pwgen_1.1.2_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
 	</a>
 </p>
 
 Very simple Python3-based GUI application to generate secure and random password.
+
+## Contents
+- [Download Latest Version](#download-latest-version)
+	- [Stores/Ubuntu Private Archive](#storesubuntu-private-archive)
+	- [Github Releases](#github-releases)
+- [Features and Screenshots](#features-and-screenshots)
+- [Dependencies](#dependencies)
+	- [Debian/Ubuntu based systems](#debianubuntu-based-distro)
+	- [Other Linux-based systems](#other-linux-based-distro)
+- [Installation](#installation)
+	- [1. Download and install binary files](#1-download-and-install-binary-files)
+	- [2. Build and Install from source](#2-build-and-install-from-source)
+		- [Debian/Ubuntu based systems](#debianubuntu-based-systems)
+		- [Other Linux-based systems](#other-linux-based-systems)
+- [User Manual](#user-manual)
+- [Issue Tracking and Contributing](#issue-tracking-and-contributing)
+	- [For Developers](#for-developers)
+	- [Translation](#translation)
+- [Contributors](#contributors)
+	- [Authors](#author)
 
 ## Download Latest Version
 
@@ -49,12 +69,12 @@ sudo apt install simple-pwgen
 ```
 
 ### Github Releases
-If you want to generate passwords from terminal, download and install the CLI Backend. To use the graphical interface download both the backend and frontend. For installation, check [here](#)
+If you want to generate passwords from terminal, download and install the CLI Backend. To use the graphical interface download both the backend and frontend. For installation, check [here](#installation).
 <p align="center">
 	<a href="https://github.com/mamolinux/simple-pwgen/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/mamolinux/simple-pwgen/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/python3-simple-pwgen_1.1.1_all.deb">Download Binary (Dependency for GUI) (.deb)</a></br>
-	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/simple-pwgen_1.1.1_all.deb">Download Binary for GUI (.deb)</a>
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/python3-simple-pwgen_1.1.2_all.deb">Download Binary (Dependency for GUI) (.deb)</a></br>
+	<a href="https://github.com/mamolinux/simple-pwgen/releases/download/1.1.1/simple-pwgen_1.1.2_all.deb">Download Binary for GUI (.deb)</a>
 </p>
 
 ## Features and Screenshots
@@ -72,25 +92,6 @@ The main purpose of this application is to generate random and strong passwords.
 </p>
 
 **N.B.: This application does not save the generated password. So make sure you save it somewhere safe like using Firefox Lockwise.**
-
-## Contents
-- [Download Latest Version](#download-latest-version)
-	- [Stores/Ubuntu Private Archive](#storesubuntu-private-archive)
-	- [Github Releases](#github-releases)
-- [Features and Screenshots](#features-and-screenshots)
-- [Dependencies](#dependencies)
-	- [Debian/Ubuntu based systems](#debianubuntu-based-distro)
-	- [Other Linux-based systems](#other-linux-based-distro)
-- [Installation](#installation)
-	- [1. Download and install binary files](#1-download-and-install-binary-files)
-	- [2. Build and Install from source](#2-build-and-install-from-source)
-		- [Debian/Ubuntu based systems](#debianubuntu-based-systems)
-		- [Other Linux-based systems](#other-linux-based-systems)
-		- [For Developers](#for-developers)
-- [User Manual](#user-manual)
-- [Issue Tracking and Contributing](#issue-tracking-and-contributing)
-- [Contributors](#contributors)
-	- [Authors](#author)
 
 ## Dependencies
 ```
@@ -119,7 +120,7 @@ Remove `apt install` in the command given in [Debian/Ubuntu based distros](#debi
 **Note**: There might be cases where one or more dependencies might not be available for your system. But that is highly unlikely. In such situations, please [create an issue](#issue-tracking-and-contributing).
 
 ## Installation
-There are two ways, this app can be installed on a Debian/Ubuntu based system.
+There are two ways, this app can be installed on a Debian/Ubuntu based system. For other distros, install from [Snap Store](#download-latest-version).
 
 ### 1. Download and install binary files
 Download the latest binary .deb files from [here](https://github.com/mamolinux/simple-pwgen/releases/latest).
@@ -140,18 +141,12 @@ cd simple-pwgen-master
 ```
 
 1. **Option 1:** Manually copying necessary files to root (`/`). For that, follow the steps below:
-	1. [**Optional**] To make translations/locales in languages other than **English**, run:
-		```
-		make
-		```
-		from the `simple-pwgen-master` in a terminal. It will create the translations/locales in `usr/share/locale`.
-	
-	2. Install python package using `pip3`:
+	1. Install python package using `pip3`:
 		```
 		sudo pip3 install .
 		```
 		It will install all files under `/usr/local/`
-	3. Compile `schemas` using:
+	2. Compile `schemas` using:
 		```
 		sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
 		```
@@ -174,12 +169,6 @@ After it is installed, run `simple-pwgen` from terminal or use the `simple-pwgen
 1. Install the [dependencies](#other-linux-based-distro).
 2. From instructions for [Debian/Ubuntu based systems](#debianubuntu-based-systems), follow **Option 1**.
 
-
-### For Developers
-Instructions for devs are coming soon or create a [PR](https://github.com/mamolinux/simple-pwgen/compare).
-
-**I have no knowledge on how to use `meson` or `npm` for testing. If you can offer any help regarding this, please start a discussion [here](https://github.com/mamolinux/simple-pwgen/discussions) or create a [PR](https://github.com/mamolinux/simple-pwgen/compare). It will be more than welcome.**
-
 ## User Manual
 Coming Soon or create a PR.
 
@@ -188,6 +177,18 @@ If you are interested to contribute and enrich the code, you are most welcome. Y
 1. If you find a bug, to open a new issue with details: [Click Here](https://github.com/mamolinux/simple-pwgen/issues)
 
 2. If you know how to fix a bug or want to add new feature/documentation to the existing package, please create a [Pull Request](https://github.com/mamolinux/simple-pwgen/compare).
+
+### For Developers
+1. Make desired modifications.
+2. Manually install using [option 2](#2-build-and-install-from-source).
+3. Test it by running `simple-pwgen -g` from terminal.
+
+### Translation
+All translations are done using using [Launchpad Tranlations](https://translations.launchpad.net/mamolinux). To help translate **Simple Password Generator** in your favourite language follow these steps:
+1. Go to [translations page](https://translations.launchpad.net/mamolinux/trunk/+pots/simple-pwgen) on Launchpad.
+2. Click on the language, you want to translate.
+3. Translate strings.
+4. Finally, click on **Save & Continue**.
 
 ## Contributors
 
